@@ -10,7 +10,7 @@
     "storybook": "start-storybook -p 6006 -s ./public",
     "build-storybook": "build-storybook -s ./public",
     "test": "concurrently \"yarn:cypress:*\"",
-    "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "cypress:style": "npx tailwindcss -i ./styles/globals.css -o ./temp/tailwind.css"
   },
   "dependencies": {
