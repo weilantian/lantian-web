@@ -11,7 +11,14 @@ const Navbar: FC<{
   return (
     <nav className="w-full overflow-hidden flex items-center md:justify-between rounded-full px-4 py-4 bg-white">
       <span className="flex   text-xl items-center">
-        <Image className="mr-3" alt="" width={48} height={48} src="/logo.png" />
+        <Image
+          unoptimized
+          className="mr-3"
+          alt=""
+          width={48}
+          height={48}
+          src="/logo.png"
+        />
 
         {withName && <span className="hidden md:block"> Lantian Wei</span>}
       </span>
