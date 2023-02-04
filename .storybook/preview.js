@@ -24,6 +24,10 @@ export const parameters = {
         name: "light",
         value: "#F9F9F9",
       },
+      {
+        name: "white",
+        value: "#FFFFFF",
+      },
     ],
   },
   controls: {
