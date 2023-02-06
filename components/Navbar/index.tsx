@@ -2,6 +2,8 @@ import { FC } from "react";
 import { IoMail, IoMenu } from "react-icons/io5";
 
 import Image from "next/image";
+import Link from "next/link";
+import NavItem from "./NavItem";
 
 // How about APPLE?
 
@@ -33,40 +35,19 @@ const Navbar: FC<{
             backgroundImage:
               "linear-gradient(to right, rgba(217, 217, 217, 0) 0%, #f1f1f1 75%)",
           }}
-          className="absolute md:hidden block -right-4 h-[120px] w-28 "
+          className="absolute md:hidden block -right-12 h-[120px] w-28 "
         ></span>
         <div className="overflow-scroll scrollbar-hide md:overflow-auto">
           <div className=" py-4 md:static   ">
-            <ul className="flex ml-4 font-medium  md:w-auto w-[320px]  md:space-x-7 space-x-5 md:mr-12  mr-8">
-              <li className="inline-block ">
-                <a
-                  className="hover:text-gray-400 relative transition-colors duration-75"
-                  href="#home"
-                >
-                  Home
-                </a>
-              </li>
-              <li className="inline-block">
-                <a
-                  className="hover:text-gray-400 transition-colors duration-75"
-                  href="#about"
-                >
-                  About
-                </a>
-              </li>
-              <li className="inline-block">
-                <a
-                  className="hover:text-gray-400 transition-colors duration-75"
-                  href="#projects"
-                >
-                  Projects
-                </a>
-              </li>
+            <ul className="flex ml-4  md:w-auto w-[320px]  md:space-x-4  md:mr-12  mr-8">
+              <NavItem href="/" name="Home" />
+              <NavItem href="/blog" name="Blog" />
+              <NavItem href="/projects" name="Projects" />
             </ul>
           </div>
         </div>
 
-        <button className=" flex hidden md:flex   items-center rounded-full text-white bg-blue-500 px-4 py-2">
+        <button className=" flex hidden md:flex z-30  items-center rounded-full text-white bg-blue-500 px-4 py-2">
           <IoMail className="mr-2" />
           Contact
         </button>
