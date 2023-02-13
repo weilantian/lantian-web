@@ -5,7 +5,7 @@ import { IoDownload } from "react-icons/io5";
 
 const NameCard: FC = () => {
   return (
-    <div className=" col-span-12 md:col-span-5 ">
+    <div className=" md:sticky top-[120px] col-span-12 md:col-span-5 ">
       <div className=" bg-white w-full flex justify-center items-center flex-col px-4 pt-4 pb-8 rounded-xl">
         <Image alt="" width={256} height={256} src="/profile.png" />
         <h1 className=" text-2xl font-medium pretty-text">Lantian Wei</h1>

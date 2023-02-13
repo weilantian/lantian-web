@@ -16,7 +16,7 @@ const SkillCard: FC<
         <Image alt="" width={width} height={height} src={src} />
       </div>
       <div>
-        <h4 className="text-white text-sm w-[80%] ">{title}</h4>
+        <h4 className="text-white font-medium text-sm w-[80%] ">{title}</h4>
       </div>
     </div>
   );

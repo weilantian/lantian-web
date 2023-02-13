@@ -14,19 +14,7 @@ import {
   SiJira,
   SiSlack,
 } from "react-icons/si";
-
-const ToolIcon: FC<{ bg?: string; icon: JSX.Element }> = ({ bg, icon }) => {
-  return (
-    <div
-      className="w-12 h-12 flex items-center justify-center rounded-xl "
-      style={{
-        backgroundColor: bg || "#F2F2F2",
-      }}
-    >
-      {icon}
-    </div>
-  );
-};
+import ToolIcon from "./ToolIcon";
 
 const Specializations: FC = () => {
   return (
