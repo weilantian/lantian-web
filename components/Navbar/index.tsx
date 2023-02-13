@@ -16,9 +16,10 @@ const Navbar: FC<{
   const nav = useAtomValue(navAtom);
   return (
     <nav
-      className="w-full fixed top-0 overflow-hidden"
+      className="w-full  z-50 fixed top-0 overflow-hidden"
       style={{
         backgroundColor: "rgba(252, 252, 252, 0.8)",
+        WebkitBackdropFilter: "blur(10px)",
         backdropFilter: "blur(10px)",
         borderBottom: "1px solid #EFEFEF",
       }}
