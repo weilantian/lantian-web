@@ -1,6 +1,7 @@
 import BriefTexts from "@/components/About/BreifTexts";
 import NameCard from "@/components/About/NameCard";
 import SkillSet from "@/components/About/SkillSet";
+import Specializations from "@/components/About/Specializations";
 
 import { navAtom } from "@/states";
 import { useSetAtom } from "jotai";
@@ -27,6 +28,7 @@ const About: FC = () => {
         <div className="col-span-12 md:col-span-7">
           <BriefTexts />
           <SkillSet />
+          <Specializations />
         </div>
       </div>
     </div>
