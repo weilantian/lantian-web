@@ -8,9 +8,9 @@ const LangSwitch: FC<{
   const toggleLang = () => setLang(lang === "en" ? "cn" : "en");
 
   return (
-    <div
+    <button
       onClick={toggleLang}
-      className="bg-slate-100 relative select-none  cursor-pointer transition-all duration-75 active:ring-blue-300 ring-0 active:ring-2  hover:ring-2 absolute rounded-full py-2 items-center w-[90px] flex justify-between px-4"
+      className="bg-slate-100 relative  cursor-pointer transition-all duration-75 active:ring-blue-300 ring-0 active:ring-2  hover:ring-2 absolute rounded-full py-2 items-center w-[90px] flex justify-between px-4"
     >
       <motion.span
         layoutId="lang-switch"
@@ -33,7 +33,7 @@ const LangSwitch: FC<{
       >
         中
       </span>
-    </div>
+    </button>
   );
 };
 

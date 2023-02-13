@@ -35,8 +35,14 @@ const Navbar: FC<{
           />
 
           <motion.span
-            initial={{ opacity: withName || nav.showName ? 1 : 0 }}
-            animate={{ opacity: withName || nav.showName ? 1 : 0 }}
+            initial={{
+              opacity: withName || nav.showName ? 1 : 0,
+              x: withName || nav.showName ? 0 : -10,
+            }}
+            animate={{
+              opacity: withName || nav.showName ? 1 : 0,
+              x: withName || nav.showName ? 0 : -10,
+            }}
             transition={{ duration: 0.1 }}
             className="hidden md:block font-semibold"
           >

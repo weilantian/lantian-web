@@ -9,3 +9,11 @@
 body {
   background-color: #f9f9f9;
 }
+
+.pretty-text {
+  background: linear-gradient(180deg, #6b95ff 0%, #4572e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
