@@ -23,7 +23,7 @@ const About: FC = () => {
         <title>About - Lantian Wei</title>
       </Head>
 
-      <div className="    max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32 grid grid-cols-12">
+      <div className="  max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32 grid grid-cols-12">
         <div className=" relative  col-span-12 md:col-span-5 ">
           <NameCard />
         </div>

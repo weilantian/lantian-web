@@ -20,7 +20,7 @@ const Specializations: FC = () => {
   return (
     <AboutCard title="Work with">
       <h3 className="text-sm font-medium">Development</h3>
-      <div className="rounded-xl mt-3 space-x-4 flex items-center">
+      <div className="rounded-xl mt-3 gap-4 flex items-center flex-wrap">
         <ToolIcon bg="#608CED" icon={<SiReact color="white" size={28} />} />
         <ToolIcon icon={<SiThreedotjs color="#1130F5" size={28} />} />
         <ToolIcon

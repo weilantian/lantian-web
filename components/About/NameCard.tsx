@@ -22,7 +22,7 @@ const NameCard: FC = () => {
               <SiFigma color="#959595" size={16} />
             </span>
           </div>
-          UI Developer / Designer
+          UI Engineer / Designer
         </span>
         <button className=" mt-12 flex hidden md:flex z-30  items-center rounded-full text-white bg-blue-500 px-4 py-2">
           <IoDownload className="mr-2" />
