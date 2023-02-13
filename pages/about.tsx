@@ -24,10 +24,10 @@ const About: FC = () => {
       </Head>
 
       <div className="  max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32 grid grid-cols-12">
-        <div className=" relative  col-span-12 md:col-span-5 ">
+        <div className=" relative  col-span-12 md:col-span-4 ">
           <NameCard />
         </div>
-        <div className="col-span-12 md:col-span-7">
+        <div className="col-span-12 md:col-span-8">
           <BriefTexts />
 
           <SkillSet />
