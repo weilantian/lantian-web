@@ -11,17 +11,17 @@ const NameCard: FC = () => {
         <h1 className=" text-2xl font-medium pretty-text">Lantian Wei</h1>
         <h3 className=" text-gray-400 text-md">Melbourne, AU</h3>
 
-        <span className="  px-4 py-2 flex text-xs lg:text-sm text-gray-400 items-center mt-6 bg-gray-100 font-medium rounded-full">
+        <span className="  px-4 py-2 flex text-xs lg:text-sm text-gray-400 items-center mt-6 bg-gray-50 font-medium rounded-full">
           UI Engineer / Designer
         </span>
         <div className=" mt-3 space-x-2 flex items-center justify-center">
-          <span className="flex w-8 h-8 bg-gray-200 rounded-full items-center justify-center">
+          <span className="flex w-8 h-8 bg-gray-100 rounded-full items-center justify-center">
             <SiReact color="#959595" size={16} />
           </span>
-          <span className="flex w-8 h-8 bg-gray-200 rounded-full items-center justify-center">
+          <span className="flex w-8 h-8 bg-gray-100 rounded-full items-center justify-center">
             <SiTypescript color="#959595" size={16} />
           </span>
-          <span className="flex w-8 h-8 bg-gray-200 rounded-full items-center justify-center">
+          <span className="flex w-8 h-8 bg-gray-100 rounded-full items-center justify-center">
             <SiFigma color="#959595" size={16} />
           </span>
         </div>
