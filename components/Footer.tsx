@@ -4,7 +4,7 @@ import { IoLogoGithub, IoLogoLinkedin, IoLogoInstagram } from "react-icons/io5";
 import { SiNextdotjs } from "react-icons/si";
 const Footer: FC = () => {
   return (
-    <div className=" border-t mt-10 border-gray-200 mx-6">
+    <div className=" border-t mt-10 border-gray-200 mx-2">
       <div className=" pt-5  max-w-[1000px] px-4 md:px-6  mx-auto">
         <div className="flex flex-col md:flex-row  justify-between">
           <div className="flex  font-medium text-lg items-center">
@@ -44,25 +44,22 @@ const Footer: FC = () => {
             </a>
           </div>
         </div>
-        <div className="mt-8 max-w-[340px]">
+        <div className="mt-8 max-w-[320px]">
           <p className="text-sm text-gray-500">
             I write about techstack and design system regularly, sin up for the
             next letter makes
           </p>
-          <div>
-            <form>
-              <div className="flex mt-3">
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1  focus:outline-none focus:ring focus:ring-blue-200 text-gray-600  placeholder-slate-400 border border-gray-200 text-sm rounded-full px-3 py-2"
-                />
-                <button className="ml-2 px-4 0 bg-blue-500 text-sm text-white rounded-full py-2">
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
+
+          <form className=" mt-3 flex items-center">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="md:flex-1 w-[200px]  focus:outline-none focus:ring focus:ring-blue-200 text-gray-600  placeholder-slate-400 border border-gray-200 text-sm rounded-full px-3 py-2"
+            />
+            <button className="ml-2 px-4 0 bg-blue-500 text-sm text-white rounded-full py-2">
+              Subscribe
+            </button>
+          </form>
         </div>
         <div className="mt-8 mb-8 flex justify-between text-gray-400 flex-col md:flex-row">
           <p>©️2023 Lantian Wei All right reserved.</p>
@@ -70,7 +67,7 @@ const Footer: FC = () => {
             Powered by
             <span className=" font-medium flex items-center text-gray-800">
               <SiNextdotjs className="ml-2 mr-1" />
-              NextJS
+              NextJs
             </span>
           </div>
         </div>
