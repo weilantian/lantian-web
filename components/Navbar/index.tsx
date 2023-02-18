@@ -71,10 +71,13 @@ const Navbar: FC<{
             </div>
           </div>
 
-          <button className=" flex hidden md:flex z-30  items-center rounded-full text-white bg-blue-500 px-4 py-2">
+          <a
+            href="mailto:hi@ericwei.fyi"
+            className=" flex hidden md:flex z-30  items-center rounded-full text-white bg-blue-500 px-4 py-2"
+          >
             <IoMail className="mr-2" />
             Contact
-          </button>
+          </a>
         </div>
       </div>
     </nav>
