@@ -13,5 +13,11 @@ export default function Home() {
   useEffect(() => {
     setNav((prev) => ({ ...prev, showName: true }));
   }, []);
-  return <></>;
+  return (
+    <>
+      <div className="w-full flex h-screen items-center justify-center">
+        <h1 className=" text-2xl  md:text-4xl">🚧 Coming Soon! 🚧</h1>
+      </div>
+    </>
+  );
 }

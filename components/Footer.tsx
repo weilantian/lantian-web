@@ -45,7 +45,7 @@ const Footer: FC = () => {
           </div>
         </div>
         <div className="mt-8 max-w-[320px]">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-400">
             I write about techstack and design system regularly, sin up for the
             next letter makes
           </p>
