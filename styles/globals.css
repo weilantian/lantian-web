@@ -10,6 +10,10 @@ body {
   background-color: #f9f9f9;
 }
 
+.webkit-overflow-hidden {
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+
 .pretty-text {
   background: linear-gradient(180deg, #6b95ff 0%, #4572e1 100%);
   -webkit-background-clip: text;
