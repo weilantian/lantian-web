@@ -113,7 +113,7 @@ export default function Home() {
               <span className="text-sm text-gray-500">3 days ago</span>
               <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
                 I write about techstack and design system regularly, sin up for
-                the next letter makes sure you don't miss out.
+                the next letter makes sure you don&#39;t miss out.
               </p>
             </div>
           </div>
@@ -135,7 +135,7 @@ export default function Home() {
               <span className="text-sm text-gray-500">3 days ago</span>
               <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
                 I write about techstack and design system regularly, sin up for
-                the next letter makes sure you don't miss out.
+                the next letter makes sure you don&#39;t miss out.
               </p>
             </div>
           </div>
@@ -157,7 +157,7 @@ export default function Home() {
               <span className="text-sm text-gray-500">3 days ago</span>
               <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
                 I write about techstack and design system regularly, sin up for
-                the next letter makes sure you don't miss out.
+                the next letter makes sure you don&#39;t miss out.
               </p>
             </div>
           </div>
