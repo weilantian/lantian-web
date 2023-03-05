@@ -41,8 +41,6 @@ const TurbineModel: FC<JSX.IntrinsicElements["group"]> = (props) => {
 
   //Spin the turbines
 
-  useThree(({ clock }) => {});
-
   return (
     <group {...props} dispose={null}>
       <mesh

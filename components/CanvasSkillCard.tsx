@@ -7,10 +7,10 @@ import TurbineModel from "./TurbineModel";
 
 const CanvasSkillCard: FC = () => {
   return (
-    <div className="w-[200px] relative overflow-hidden  rounded-xl h-[200px]">
+    <div className="w-[200px] webkit-overflow-hidden relative overflow-hidden  rounded-xl h-[200px]">
       <Canvas
         resize={{ scroll: false }}
-        className="w-full h-full"
+        className="w-full h-full rounded-xl"
         camera={{ fov: 50 }}
         shadows
         dpr={[1, 2]}
