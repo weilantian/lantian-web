@@ -40,7 +40,7 @@ const Experiences: FC = () => {
   return (
     <AboutCard title="Experiences">
       <ExperienceItem
-        position="Software Engineer (React)"
+        position="Design Engineer (React)"
         company="iMean"
         duration="2021 - Present"
         link="https://imean.tech"

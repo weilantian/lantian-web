@@ -61,7 +61,7 @@ const Navbar: FC<{
             }}
             className="absolute md:hidden block -right-12 h-[120px] w-28 "
           ></span>
-          <div className="overflow-scroll hidden scrollbar-hide md:overflow-auto">
+          <div className="overflow-scroll  scrollbar-hide md:overflow-auto">
             <div className=" py-4 md:static   ">
               <ul className="flex ml-4  md:w-auto w-[320px]  md:space-x-4  md:mr-12  mr-8">
                 <NavItem href="/blog" name="Blog" />
