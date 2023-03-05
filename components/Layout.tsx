@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 const Layout: FC<PropsWithChildren<{}>> = ({ children }) => {
   return (
-    <div>
+    <div className="font-sans">
       <Head>
         <meta name="viewport" content="width=device-width, user-scalable=no" />
       </Head>

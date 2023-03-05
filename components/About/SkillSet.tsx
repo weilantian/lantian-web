@@ -11,7 +11,6 @@ const SkillSet: FC = () => {
     <AboutCard title="Great with">
       <div className="w-full overflow-x-scroll ">
         <div className="flex pb-4 items-center space-x-4 w-fit">
-          <CanvasSkillCard />
           <SkillCard
             alt=""
             width={114}
@@ -28,6 +27,7 @@ const SkillSet: FC = () => {
             title="UX Research / Analysis"
             className="bg-gradient-to-r from-amber-500 to-yellow-500"
           />
+          <CanvasSkillCard />
           {/* <SkillCard
             alt=""
             width={106 * 1.2}
