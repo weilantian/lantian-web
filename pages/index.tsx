@@ -8,8 +8,17 @@ import { navAtom } from "@/states";
 import { SiFigma, SiReact, SiTypescript } from "react-icons/si";
 import Link from "next/link";
 import { IoChevronForwardCircleSharp, IoOpenOutline } from "react-icons/io5";
+import { WorkItem } from "./works";
+
+import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const inter = Inter({ subsets: ["latin"] });
+
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
 
 export default function Home() {
   const setNav = useSetAtom(navAtom);
@@ -74,6 +83,40 @@ export default function Home() {
 
       <div>
         <div className="flex mt-8 justify-between">
+          <h3 className=" text-xl font-semibold">Design Works</h3>
+          <Link className="text-blue-500 group font-medium" href="/works">
+            All Design Works
+            <IoChevronForwardCircleSharp
+              size={18}
+              className="inline-block ml-1 duration-75 transition-transform group-hover:translate-x-1"
+            />
+          </Link>
+        </div>
+
+        <Swiper
+          autoplay={{ delay: 3000 }}
+          pagination={{ clickable: true }}
+          modules={[Pagination, A11y, Autoplay]}
+          spaceBetween={50}
+          slidesPerView={1}
+        >
+          <SwiperSlide>
+            <div className="grid pb-10 mt-4 gap-4 grid-cols-2">
+              <WorkItem />
+              <WorkItem />
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div className="grid mt-4 pb-10 gap-4 grid-cols-2">
+              <WorkItem />
+              <WorkItem />
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
+
+      <div>
+        <div className="flex mt-8 justify-between">
           <h3 className=" text-xl font-semibold">Writings</h3>
           <Link className="text-blue-500 group font-medium" href="/blog">
             All Posts
@@ -95,78 +138,38 @@ export default function Home() {
           </div>
         </div>
         <div className=" grid mt-4 grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="rounded-xl h-[150px] gap-4 bg-white pl-4 pr-6 flex py-3">
-            <div className="w-[180px] rounded-md overflow-hidden h-full">
-              <Image
-                width={180}
-                height={240}
-                className="  object-cover "
-                alt=""
-                src="/placeholder.png"
-              />
-            </div>
-
-            <div className="flex-1 w-full">
-              <h3 className="font-semibold">
-                How to create effective design experience
-              </h3>
-              <span className="text-sm text-gray-500">3 days ago</span>
-              <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
-                I write about techstack and design system regularly, sin up for
-                the next letter makes sure you don&#39;t miss out.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-xl h-[150px] gap-4 bg-white pl-4 pr-6 flex py-3">
-            <div className="w-[180px] rounded-md overflow-hidden h-full">
-              <Image
-                width={180}
-                height={240}
-                className="  object-cover "
-                alt=""
-                src="/placeholder.png"
-              />
-            </div>
-
-            <div className="flex-1 w-full">
-              <h3 className="font-semibold">
-                How to create effective design experience
-              </h3>
-              <span className="text-sm text-gray-500">3 days ago</span>
-              <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
-                I write about techstack and design system regularly, sin up for
-                the next letter makes sure you don&#39;t miss out.
-              </p>
-            </div>
-          </div>
-          <div className="rounded-xl h-[150px] gap-4 bg-white pl-4 pr-6 flex py-3">
-            <div className="w-[180px] rounded-md overflow-hidden h-full">
-              <Image
-                width={180}
-                height={240}
-                className="  object-cover "
-                alt=""
-                src="/placeholder.png"
-              />
-            </div>
-
-            <div className="flex-1 w-full">
-              <h3 className="font-semibold">
-                How to create effective design experience
-              </h3>
-              <span className="text-sm text-gray-500">3 days ago</span>
-              <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
-                I write about techstack and design system regularly, sin up for
-                the next letter makes sure you don&#39;t miss out.
-              </p>
-            </div>
-          </div>
+          <ArticleCard />
+          <ArticleCard />
+          <ArticleCard />
         </div>
       </div>
     </div>
   );
 }
 
+const ArticleCard = () => {
+  return (
+    <div className="rounded-xl h-[150px] gap-4 bg-white pl-4 pr-6 flex py-3">
+      <div className="w-[180px] rounded-md overflow-hidden h-full">
+        <Image
+          width={180}
+          height={240}
+          className="  object-cover "
+          alt=""
+          src="/placeholder.jpg"
+        />
+      </div>
+
+      <div className="flex-1 w-full">
+        <h3 className="font-semibold">How to conduct effect user research</h3>
+        <span className="text-sm text-gray-500">3 days ago</span>
+        <p className="text-sm line-clamp-2 text-tr mt-2 text-gray-500 ">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+        </p>
+      </div>
+    </div>
+  );
+};
 const ProjectCard = () => {
   return (
     <div className="mt-4 group cursor-pointer relative">
@@ -181,7 +184,7 @@ const ProjectCard = () => {
             height={240}
             className=" object-cover rounded-md"
             alt=""
-            src="/placeholder.png"
+            src="/placeholder.jpg"
           />
         </div>
         <div className=" mt-4">
@@ -189,10 +192,10 @@ const ProjectCard = () => {
 
           <div className="flex mt-3 flex-wrap gap-2">
             <div className="  font-medium text-xs text-gray-600 bg-gray-100 rounded-lg px-3 py-2">
-              Design Project
+              Better Delivery Experience
             </div>
             <div className="  font-medium text-xs text-gray-600 bg-gray-100 rounded-lg px-3 py-2">
-              Design Project
+              Case Study
             </div>
           </div>
         </div>

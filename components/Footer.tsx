@@ -45,12 +45,12 @@ const Footer: FC = () => {
           </div>
         </div>
         <div className="mt-8 max-w-[320px]">
-          <p className="text-sm text-gray-400">
+          {/* <p className="text-sm text-gray-400">
             I write about techstack and design system regularly, sin up for the
             next letter makes
-          </p>
+          </p> */}
 
-          <form className=" mt-3 flex items-center">
+          {/* <form className=" mt-3 flex items-center">
             <input
               type="email"
               placeholder="Your email"
@@ -59,7 +59,7 @@ const Footer: FC = () => {
             <button className="ml-2 px-4 0 bg-blue-500 text-sm text-white rounded-full py-2">
               Subscribe
             </button>
-          </form>
+          </form> */}
         </div>
         <div className="mt-8 mb-8 flex justify-between text-gray-400 flex-col md:flex-row">
           <p>©️2023 Lantian Wei All right reserved.</p>

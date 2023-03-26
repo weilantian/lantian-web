@@ -10,25 +10,14 @@ const BriefTexts = () => {
       extra={<LangSwitch lang={lang} setLang={setLang} />}
     >
       <p className=" text-gray-500 text-sm md:text-md leading-relaxed">
-        I am Lantian, a developer and designer specializing in crafting refined
-        user faced products. I am passionate about building excellent software
-        that improves the lives of those around me. I am currently working at{" "}
-        <a
-          href="https://www.ubisoft.com/en-US/studio/ubisoft-shanghai.aspx"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Ubisoft Shanghai
-        </a>{" "}
-        as a UI Developer. I am also a part-time instructor at{" "}
-        <a
-          href="https://www.ubisoft.com/en-US/studio/ubisoft-shanghai.aspx"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Udemy
-        </a>{" "}
-        where I teach courses on React and Typescript.
+        I am a design student currently studying at RMIT university specializing
+        in digital media design. I am passionate about brining appalling and
+        functional digital product interfaces to the user. During my internship
+        experiences in multiple startup companies, I applied and strength my
+        knowledge of user-centered design approach in large scale projects
+        including a web product which helps companies to better onboard thier
+        customers, as well as a community app which brings people who
+        participate in a same competition together and get to know each other.
       </p>
     </AboutCard>
   );

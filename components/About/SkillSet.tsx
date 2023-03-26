@@ -27,7 +27,7 @@ const SkillSet: FC = () => {
             title="UX Research / Analysis"
             className="bg-gradient-to-r from-amber-500 to-yellow-500"
           />
-          <CanvasSkillCard />
+
           {/* <SkillCard
             alt=""
             width={106 * 1.2}
