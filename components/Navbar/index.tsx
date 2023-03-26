@@ -64,9 +64,10 @@ const Navbar: FC<{
           <div className="overflow-scroll  scrollbar-hide md:overflow-auto">
             <div className=" py-4 md:static   ">
               <ul className="flex ml-4  md:w-auto w-[320px]  md:space-x-4  md:mr-12  mr-8">
-                <NavItem href="/blog" name="Blog" />
                 <NavItem href="/projects" name="Projects" />
+                <NavItem href="/works" name="Design" />
                 <NavItem href="/about" name="About" />
+                <NavItem href="/blog" name="Blog" />
               </ul>
             </div>
           </div>
