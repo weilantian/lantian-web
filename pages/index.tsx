@@ -213,7 +213,7 @@ const ProjectCard = () => {
 
 export const getStaticProps: GetStaticProps = async () => {
   const articles = await client.fetch(
-    `*[ _type == "article" ]{title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`
+    `*[ _type == "article" ]{_id , title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`
   );
 
   return {
