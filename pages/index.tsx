@@ -2,14 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
 import { useSetAtom } from "jotai";
 import { navAtom } from "@/states";
 import { SiFigma, SiReact, SiTypescript } from "react-icons/si";
 import Link from "next/link";
 import { IoChevronForwardCircleSharp, IoOpenOutline } from "react-icons/io5";
 import { WorkItem } from "./works";
-
+import { useNextSanityImage } from "next-sanity-image";
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,8 +19,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import { GetStaticProps, NextPage } from "next";
+import { client, urlFor } from "@/lib/sanity";
+import { Article } from "@/lib/models";
 
-export default function Home() {
+const Home: NextPage<{
+  articles: Array<Article>;
+}> = ({ articles }) => {
   const setNav = useSetAtom(navAtom);
   useEffect(() => {
     setNav((prev) => ({ ...prev, showName: true }));
@@ -138,25 +143,28 @@ export default function Home() {
           </div>
         </div>
         <div className=" grid mt-4 grid-cols-1 md:grid-cols-2 gap-4">
-          <ArticleCard />
-          <ArticleCard />
-          <ArticleCard />
+          {articles.map((article) => (
+            <ArticleCard article={article} key={article._id} />
+          ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
-const ArticleCard = () => {
+const ArticleCard: FC<{
+  article: Article;
+}> = ({ article }) => {
+  console.log(article.coverImage);
   return (
     <div className="rounded-xl h-[150px] gap-4 bg-white pl-4 pr-6 flex py-3">
       <div className="w-[180px] rounded-md overflow-hidden h-full">
         <Image
-          width={180}
-          height={240}
+          height={article.coverImage.metadata.dimensions.height}
+          width={article.coverImage.metadata.dimensions.width}
+          alt={article.title}
+          src={article.coverImage.url}
           className="  object-cover "
-          alt=""
-          src="/placeholder.jpg"
         />
       </div>
 
@@ -203,3 +211,17 @@ const ProjectCard = () => {
     </div>
   );
 };
+
+export const getStaticProps: GetStaticProps = async () => {
+  const articles = await client.fetch(
+    `*[ _type == "article" ]{title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`
+  );
+
+  return {
+    props: {
+      articles,
+    },
+  };
+};
+
+export default Home;
