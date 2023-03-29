@@ -155,7 +155,6 @@ const Home: NextPage<{
 const ArticleCard: FC<{
   article: Article;
 }> = ({ article }) => {
-  console.log(article.coverImage);
   return (
     <div className="rounded-xl h-[150px] gap-4 bg-white pl-4 pr-6 flex py-3">
       <div className="w-[180px] rounded-md overflow-hidden h-full">
