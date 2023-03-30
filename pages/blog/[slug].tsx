@@ -7,6 +7,7 @@ import Head from "next/head";
 import { IoChevronForward } from "react-icons/io5";
 import { FC } from "react";
 import Link from "next/link";
+import { Slug } from "@/lib/models";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -47,9 +48,7 @@ const ptComponents = {
 const Navbar: FC<{
   category: {
     title: string;
-    slug: {
-      current: string;
-    };
+    slug: Slug;
   };
 }> = ({ category }) => {
   return (
@@ -76,9 +75,7 @@ const BlogPage: NextPage<{
     title: string;
     category: {
       title: string;
-      slug: {
-        current: string;
-      };
+      slug: Slug;
     };
     tags: Array<string>;
     coverImage: string;
@@ -102,7 +99,7 @@ const BlogPage: NextPage<{
   return (
     <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
       <Head>
-        <title>{title} - Lantian Wei</title>
+        <title>{`${title} - Lantian Wei`}</title>
       </Head>
       <div className="w-full  bg-white rounded-xl px-8 py-8">
         <Navbar category={category} />
@@ -127,50 +124,8 @@ const BlogPage: NextPage<{
   );
 };
 
-// const BlogPage: NextPage<{
-//   post: {
-//     title: string;
-//     categories: string[];
-//     coverImage: string;
-//     body: [];
-//   };
-// }> = ({ post }) => {
-//   const { title, categories, coverImage, body } = post
-//     ? post
-//     : {
-//         title: "Missing Title",
-//         categories: [],
-//         coverImage: "",
-//         body: [],
-//       };
-//   return (
-//     <div>
-//       <Head>
-//         <title>{title} - Lantian Wei</title>
-//       </Head>
-//       <div className=" container px-32">
-//         <div>
-//           <h1 className="text-4xl font-bold">{title}</h1>
-//           <div className="flex flex-wrap">
-//             {categories.map((category) => (
-//               <span
-//                 key={category}
-//                 className="text-sm text-gray-500 font-semibold"
-//               >
-//                 {category}
-//               </span>
-//             ))}
-//           </div>
-//         </div>
-//         <article className="prose lg:prose-xl">
-//           <PortableText value={body} components={ptComponents} />
-//         </article>
-//       </div>
-//     </div>
-//   );
-// };
-
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
+  _id,
   title,
   "category": category->{title, slug},
   "coverImage": coverImage.asset->{url,caption},
