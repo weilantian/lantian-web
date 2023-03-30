@@ -14,7 +14,7 @@ const WorkList: FC<{ designWorks: Array<DesignWork> }> = ({ designWorks }) => {
   const setWorkModalAtom = useSetAtom(workModalAtom);
   return (
     <div className="max-w-[1000px] mx-auto  mt-32">
-      <h1 className=" text-3xl font-semibold">Works (291)</h1>
+      <h1 className=" text-3xl font-semibold">Works ({designWorks.length})</h1>
       <h2 className=" text-xl mt-1 text-gray-400">
         A collection of my design and interactive prototypes.
       </h2>
