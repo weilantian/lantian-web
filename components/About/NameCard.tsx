@@ -1,7 +1,7 @@
 import { FC } from "react";
 import Image from "next/image";
 import { SiTypescript, SiReact, SiFigma } from "react-icons/si";
-import { IoDownload } from "react-icons/io5";
+import { IoDownload, IoMail } from "react-icons/io5";
 
 const NameCard: FC = () => {
   return (
@@ -25,10 +25,13 @@ const NameCard: FC = () => {
             <SiFigma color="#959595" size={16} />
           </span>
         </div>
-        <button className=" mt-8 flex hidden md:flex z-30 text-sm  items-center rounded-full text-white bg-blue-500 px-4 py-2">
-          <IoDownload className="mr-2" />
-          Download Resume
-        </button>
+        <a
+          href="mailto:hi@ericwei.fyi"
+          className=" mt-8 flex hidden md:flex z-30 text-sm  items-center rounded-full text-white bg-blue-500 px-4 py-2"
+        >
+          <IoMail className="mr-2" />
+          Contact
+        </a>
       </div>
     </div>
   );

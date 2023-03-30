@@ -67,7 +67,7 @@ const Navbar: FC<{
                 <NavItem href="/projects" name="Projects" />
                 <NavItem href="/works" name="Design" />
                 <NavItem href="/about" name="About" />
-                <NavItem href="/blog" name="Blog" />
+                {/* <NavItem href="/blog" name="Blog" /> */}
               </ul>
             </div>
           </div>
