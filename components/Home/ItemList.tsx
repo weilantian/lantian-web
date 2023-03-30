@@ -11,7 +11,7 @@ const ItemList: FC<ItemListProps> = ({
 }) => {
   return (
     <div>
-      <div className="flex mt-8 justify-between">
+      <div className="flex mt-6 justify-between">
         <h3 className=" text-xl font-semibold">{title}</h3>
         {itemPageOptions && (
           <Link

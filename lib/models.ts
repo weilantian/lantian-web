@@ -46,4 +46,6 @@ export interface DesignWork {
   slug: Slug;
   image: Image;
   description: string;
+  link: string | null;
+  publishedAt: string | null;
 }
