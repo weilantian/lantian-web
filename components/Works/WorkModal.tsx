@@ -20,7 +20,7 @@ const WorkModal: FC<{}> = () => {
       client.fetch(
         groq`
     *[_type == "designWork" && _id == $id][0] {
-  _id,title, description,"image":image.asset->{url,metadata{dimensions}}}
+  _id,title,publishedAt,link , description,"image":image.asset->{url,metadata{dimensions}}}
     `,
         {
           id: modalAtom.viewingWorkId,
@@ -58,29 +58,49 @@ const WorkModal: FC<{}> = () => {
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className=" font-semibold text-xl">{data?.title}</h3>
-                    <h4 className="  text-lg text-gray-400">March 26</h4>
+                    <h4 className="  text-lg text-gray-400">
+                      {data?.publishedAt &&
+                        new Date(data?.publishedAt).toLocaleDateString(
+                          "en-US",
+                          {
+                            year: "numeric",
+                            month: "long",
+                          }
+                        )}
+                    </h4>
                   </div>
                   <div>
-                    <button className=" flex gap-2 items-center bg-pink-100 text-pink-500 px-4 rounded-full py-3">
-                      <SiDribbble />
-                      View on Dribbble
-                    </button>
+                    {data?.link && (
+                      <a
+                        target="_blank"
+                        rel="noreferrer"
+                        href={data?.link}
+                        className=" flex gap-2 items-center bg-pink-100 text-pink-500 px-4 rounded-full py-3"
+                      >
+                        <SiDribbble />
+                        View on Dribbble
+                      </a>
+                    )}
                   </div>
                 </div>
                 <figure className="mt-8 my-8 rounded-md overflow-hidden">
-                  <Image
-                    className="object-cover"
-                    width={4096}
-                    height={3072}
-                    alt=""
-                    src="/app-mockup.jpg"
-                  />
+                  {data?.image && (
+                    <Image
+                      className="object-cover max-h-[600px]"
+                      width={data?.image.metadata.dimensions.width}
+                      height={data?.image.metadata.dimensions.height}
+                      alt=""
+                      src={data?.image.url}
+                    />
+                  )}
                 </figure>
-                <div className="px-4 mb-8 text-xl font-medium">
-                  UI Design for a mobile app that helps you to keep track of
-                  your food.
-                </div>
-                <div className=" flex mb-20 justify-between gap-6">
+                {data?.description && (
+                  <div className="px-4 mb-8 text-xl font-medium">
+                    {data?.description}
+                  </div>
+                )}
+
+                {/* <div className=" flex mb-20 justify-between gap-6">
                   <button className="flex text-sm font-medium items-center text-gray-400  gap-2">
                     <div className=" flex justify-center   items-center w-8 h-8 bg-gray-100 rounded-full">
                       <IoArrowBack />
@@ -93,7 +113,7 @@ const WorkModal: FC<{}> = () => {
                     </div>
                     Next
                   </button>
-                </div>
+                </div> */}
               </div>
             )}
           </motion.section>

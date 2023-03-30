@@ -2,7 +2,7 @@ import { SiFigma, SiReact, SiTypescript } from "react-icons/si";
 import Image from "next/image";
 const HomeNameCard = () => {
   return (
-    <div className=" px-8 py-6 bg-white rounded-xl">
+    <div className=" px-8 mb-10 py-6 bg-white rounded-xl">
       <div className="flex justify-between">
         <div className="flex flex-col justify-between">
           <h1 className=" pretty-text text-7xl font-bold">

@@ -4,14 +4,22 @@ import Experiences from "@/components/About/Experiences";
 import NameCard from "@/components/About/NameCard";
 import SkillSet from "@/components/About/SkillSet";
 import Specializations from "@/components/About/Specializations";
+import { client } from "@/lib/sanity";
 
 import { navAtom } from "@/states";
+import groq from "groq";
 import { useSetAtom } from "jotai";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 
 import { FC, useEffect } from "react";
 
-const About: FC = () => {
+const About: NextPage<{
+  aboutInfo: {
+    _id: string;
+    about: string;
+  };
+}> = ({ aboutInfo }) => {
   const setNav = useSetAtom(navAtom);
 
   useEffect(() => {
@@ -28,7 +36,7 @@ const About: FC = () => {
           <NameCard />
         </div>
         <div className="col-span-12 md:col-span-8">
-          <BriefTexts />
+          <BriefTexts content={aboutInfo.about} />
 
           <SkillSet />
           <Experiences />
@@ -39,6 +47,21 @@ const About: FC = () => {
       </div>
     </div>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const aboutInfo = await client.fetch(groq`
+    *[_type == "about" && _id == "about"][0] {
+  _id,about
+}
+  `);
+
+  return {
+    props: {
+      aboutInfo,
+    },
+    revalidate: 100,
+  };
 };
 
 export default About;
