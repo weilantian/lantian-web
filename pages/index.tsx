@@ -25,7 +25,7 @@ const Home: NextPage<{
   caseStudies: Array<ItemListItem>;
   projects: Array<ItemListItem>;
   designWorks: Array<DesignWork>;
-}> = ({ articles, caseStudies, projects, designWorks }) => {
+}> = ({ caseStudies, projects, designWorks }) => {
   const setNav = useSetAtom(navAtom);
   useEffect(() => {
     setNav((prev) => ({ ...prev, showName: true }));
@@ -48,9 +48,9 @@ const Home: NextPage<{
         items={projects}
         itemPageOptions={{
           title: "All Projects",
-          link: "/projects",
+          link: "/project",
         }}
-        path="/projects"
+        path="/project"
         title="Projects"
       />
 

@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -13,6 +13,20 @@ import { IoChevronForwardCircleSharp } from "react-icons/io5";
 import WorkItem from "../Works/WorkItem";
 
 const DesignWorkList: FC<{items:Array<DesignWork>}> = ({items}) => {
+  const [isSmallerScreen,setIsSmallerScreen] = useState(false)
+  useEffect(()=> {
+    if (window.innerWidth < 640) {
+      setIsSmallerScreen(true)
+    }
+    window.addEventListener('resize',()=>{
+      if (window.innerWidth < 640) {
+        setIsSmallerScreen(true)
+      } else {
+        setIsSmallerScreen(false)
+      }
+    })
+    return ()=> window.removeEventListener('resize',()=>{})
+  },[])
   return <div>
         <div className="flex mb-6 mt-8 justify-between">
           <h3 className=" text-xl font-semibold">Design Works</h3>
@@ -30,7 +44,7 @@ const DesignWorkList: FC<{items:Array<DesignWork>}> = ({items}) => {
           pagination={{ clickable: true }}
           modules={[Pagination, A11y, Autoplay]}
           spaceBetween={24}
-          slidesPerView={1}
+          slidesPerView={isSmallerScreen ? 1 : 2}
         >
 
           {items.map(item=>(   <SwiperSlide key={item._id}>
