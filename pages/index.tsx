@@ -15,7 +15,10 @@ export default function Home() {
   }, []);
   return (
     <>
-      <div className="w-full flex h-screen items-center justify-center">
+      <Head>
+        <title>Lantian Wei</title>
+      </Head>
+      <div className=" flex mx-28 mt-32 rounded-lg bg-white h-screen items-center justify-center">
         <h1 className=" text-2xl  md:text-4xl">🚧 Coming Soon! 🚧</h1>
       </div>
     </>
