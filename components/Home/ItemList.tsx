@@ -49,8 +49,8 @@ const ProjectCard: FC<{ item: ItemListItem; path: string }> = ({
           <IoOpenOutline className="mr-1" />
           Learn More
         </span>
-        <div className="w-[320px] px-4 py-4 h-[340px] rounded-xl bg-white">
-          <div className="overflow-hidden h-[170px] rounded-md">
+        <div className="md:w-[320px] w-[260px] px-4 py-4 h-[320px] md:h-[340px] rounded-xl bg-white">
+          <div className="overflow-hidden h-[140px]  md:h-[180px] rounded-md">
             <Image
               width={coverImgDimensions.width}
               height={coverImgDimensions.height}
@@ -60,7 +60,7 @@ const ProjectCard: FC<{ item: ItemListItem; path: string }> = ({
             />
           </div>
 
-          <div className="flex mt-4 h-[120px] flex-col justify-between">
+          <div className="flex mt-4 h-[130px] md:h-[120px] flex-col justify-between">
             <div>
               <h3 className="font-semibold">{item.title}</h3>
               <p className="mt-1 text-sm font-medium text-gray-400">

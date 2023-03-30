@@ -33,9 +33,9 @@ const WorkItem: FC<DesignWork> = ({ _id, image }) => {
         </h3>
       </div>
       <Image
-        className=" md:w-full h-[140px] md:h-[300px] object-cover"
-        width={4096}
-        height={3072}
+        className=" md:w-full h-[220px] md:h-[300px] object-cover"
+        width={image.metadata.dimensions.width}
+        height={image.metadata.dimensions.height}
         alt=""
         src={image.url}
       />
