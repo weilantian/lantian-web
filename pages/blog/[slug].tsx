@@ -99,7 +99,7 @@ const BlogPage: NextPage<{
   return (
     <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
       <Head>
-        <title>{`${title} - Lantian Wei`}</title>
+        <title>{`${title}`} </title>
       </Head>
       <div className="w-full  bg-white rounded-xl px-8 py-8">
         <Navbar category={category} />
@@ -116,7 +116,7 @@ const BlogPage: NextPage<{
           ))}
         </div>
 
-        <article className="mt-8 pt-6 border-gray-200 prose  md:prose-lg max-w-none  border-t">
+        <article className="mt-8 pt-6 border-gray-200 prose-sm  md:prose md:max-w-none max-w-none   border-t">
           <PortableText value={body} components={ptComponents} />
         </article>
       </div>
