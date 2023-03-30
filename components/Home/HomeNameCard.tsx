@@ -3,9 +3,9 @@ import Image from "next/image";
 const HomeNameCard = () => {
   return (
     <div className=" px-8 mb-10 py-6 bg-white rounded-xl">
-      <div className="flex justify-between">
+      <div className="flex md:flex-row items-center flex-col-reverse justify-between  ">
         <div className="flex flex-col justify-between">
-          <h1 className=" pretty-text text-7xl font-bold">
+          <h1 className=" pretty-text text-center md:text-left text-5xl md:text-7xl font-bold">
             Lantian
             <br />
             Wei
@@ -28,7 +28,7 @@ const HomeNameCard = () => {
           </div>
         </div>
 
-        <div>
+        <div className="md:w-[256px] w-[180px] h-[180px] md:h-[256px]">
           <Image alt="" width={256} height={256} src="/profile.png" />
         </div>
       </div>

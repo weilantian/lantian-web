@@ -30,7 +30,7 @@ const DesignWorkList: FC<{items:Array<DesignWork>}> = ({items}) => {
           pagination={{ clickable: true }}
           modules={[Pagination, A11y, Autoplay]}
           spaceBetween={24}
-          slidesPerView={2}
+          slidesPerView={1}
         >
 
           {items.map(item=>(   <SwiperSlide key={item._id}>

@@ -1,17 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import styles from "@/styles/Home.module.css";
+
 import { FC, useEffect } from "react";
 import { useSetAtom } from "jotai";
 import { navAtom } from "@/states";
-import { SiFigma, SiReact, SiTypescript } from "react-icons/si";
-import Link from "next/link";
-import { IoChevronForwardCircleSharp, IoOpenOutline } from "react-icons/io5";
-
-import { useNextSanityImage } from "next-sanity-image";
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -143,6 +136,7 @@ export const getStaticProps: GetStaticProps = async () => {
       projects,
       designWorks,
     },
+    revalidate: 100,
   };
 };
 

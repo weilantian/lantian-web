@@ -39,5 +39,6 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       designWorks,
     },
+    revalidate: 100,
   };
 };
