@@ -6,6 +6,7 @@ import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
+import { FC } from "react";
 
 import { BiLinkExternal } from "react-icons/bi";
 import { IoChevronForward } from "react-icons/io5";
