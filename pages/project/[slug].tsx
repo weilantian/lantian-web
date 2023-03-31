@@ -26,7 +26,7 @@ const Navbar: FC = () => {
       </Link>
       <IoChevronForward className=" text-gray-400" />
       <Link
-        href={`/project}`}
+        href={`/project`}
         className=" text-gray-500 hover:text-gray-400 cursor-pointer font-medium"
       >
         Projects

@@ -37,19 +37,24 @@ const ItemList: FC<ItemListProps> = ({
   );
 };
 
-const ProjectCard: FC<{ item: ItemListItem; path: string }> = ({
-  path,
-  item,
-}) => {
+export const ProjectCard: FC<{
+  item: ItemListItem;
+  path: string;
+  autoFillWidth?: boolean;
+}> = ({ path, item, autoFillWidth }) => {
   const coverImgDimensions = item.coverImage.metadata.dimensions;
   return (
     <Link href={`${path}/${item.slug.current}`}>
-      <div className="mt-4 group cursor-pointer relative">
+      <div className={`mt-4 group cursor-pointer relative`}>
         <span className="absolute opacity-0 translate-x-10 scale-75 group-hover:scale-100 duration-200 transition-all group-hover:opacity-100 group-hover:translate-x-0 flex items-center text-sm right-0 top-2 z-10 bg-blue-500 text-white rounded-full px-4 py-1">
           <IoOpenOutline className="mr-1" />
           Learn More
         </span>
-        <div className="md:w-[320px] w-[260px] px-4 py-4 h-[320px] md:h-[340px] rounded-xl bg-white">
+        <div
+          className={`md:w-[320px] px-4 py-4 h-[320px] md:h-[340px] rounded-xl bg-white ${
+            autoFillWidth ? "w-full" : "w-[260px]"
+          }`}
+        >
           <div className="overflow-hidden h-[140px]  md:h-[180px] rounded-md">
             <Image
               width={coverImgDimensions.width}

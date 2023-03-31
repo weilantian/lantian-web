@@ -5,6 +5,7 @@ import SkillCard from "../SkillCard";
 import Link from "next/link";
 import { IoChevronForwardCircleSharp } from "react-icons/io5";
 import CanvasSkillCard from "../CanvasSkillCard";
+import SkillSwitch from "../SkillSwitch";
 
 const SkillSet: FC = () => {
   return (
@@ -41,7 +42,7 @@ const SkillSet: FC = () => {
       <div className="mt-4">
         <Link
           className="mt-2 group text-blue-500 flex items-center font-medium"
-          href="/projects"
+          href="/project"
         >
           Projects
           <IoChevronForwardCircleSharp
