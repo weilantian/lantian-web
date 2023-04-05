@@ -9,7 +9,19 @@ import SkillSwitch from "../SkillSwitch";
 
 const SkillSet: FC = () => {
   return (
-    <AboutCard title="Great with">
+    <AboutCard
+      extra={
+        <div className="flex gap-2">
+          <span className="bg-blue-500 text-white cursor-pointer py-2 rounded-full border px-3 text-xs">
+            🎨 Design
+          </span>
+          <span className="bg-blue-500 text-white cursor-pointer py-2 rounded-full border px-3 text-xs">
+            🎨 Design
+          </span>
+        </div>
+      }
+      title="Great with"
+    >
       <div className="w-full overflow-x-scroll ">
         <div className="flex pb-4 items-center space-x-4 w-fit">
           <SkillCard
