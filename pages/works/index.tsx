@@ -8,6 +8,7 @@ import { client } from "@/lib/sanity";
 import groq from "groq";
 import { DesignWork } from "@/lib/models";
 import WorkItem from "@/components/Works/WorkItem";
+import Head from "next/head";
 
 const WorkList: FC<{ designWorks: Array<DesignWork> }> = ({ designWorks }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,6 +19,14 @@ const WorkList: FC<{ designWorks: Array<DesignWork> }> = ({ designWorks }) => {
       <h2 className=" text-xl mt-1 text-gray-400">
         A collection of my design and interactive prototypes.
       </h2>
+
+      <Head>
+        <title>Works - Eric Wei</title>
+        <meta
+          name="description"
+          content="  A collection of my design and interactive prototypes."
+        />
+      </Head>
 
       <section className=" grid mt-8 grid-cols-2 gap-6">
         {designWorks.map((work) => (

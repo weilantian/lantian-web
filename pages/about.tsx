@@ -29,6 +29,7 @@ const About: NextPage<{
     <div>
       <Head>
         <title>About - Eric Wei</title>
+        <meta name="description" content="About me." />
       </Head>
 
       <div className="  max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32 grid grid-cols-12">
