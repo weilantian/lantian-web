@@ -54,7 +54,7 @@ const WorkModal: FC<{}> = () => {
                 {<BiLoader size={48} className="animate-spin text-gray-400" />}
               </div>
             ) : (
-              <div className=" mx-auto max-w-[1000px] ">
+              <div className=" mx-auto px-4 max-w-[1000px] ">
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className=" font-semibold text-xl">{data?.title}</h3>
@@ -95,8 +95,10 @@ const WorkModal: FC<{}> = () => {
                   )}
                 </figure>
                 {data?.description && (
-                  <div className="px-4 mb-8 text-xl font-medium">
-                    {data?.description}
+                  <div className="px-4 mb-8">
+                    <p className=" tex-md md:text-lg text-gray-600">
+                      {data?.description}
+                    </p>
                   </div>
                 )}
 
