@@ -15,14 +15,14 @@ const Footer: FC = () => {
               height={38}
               src="/logo.png"
             />
-            Lantian Wei
+            Eric Wei
           </div>
           <div className="flex md:mt-0 mt-6 space-x-2">
             <a
               className=" rounded-full flex text-slate-600  items-center justify-center w-12 h-12 border"
               target="_blank"
               rel="noreferrer"
-              href="https://github.com/weilantian"
+              href="https://github.com/weiEric"
             >
               <IoLogoGithub size={22} />
             </a>
@@ -38,7 +38,7 @@ const Footer: FC = () => {
               className=" rounded-full text-slate-600 flex items-center justify-center w-12 h-12 border"
               target="_blank"
               rel="noreferrer"
-              href="https://www.instagram.com/lantian02/"
+              href="https://www.instagram.com/Eric02/"
             >
               <IoLogoInstagram size={22} />
             </a>
@@ -59,7 +59,7 @@ const Footer: FC = () => {
           </form> */}
         </div>
         <div className="mt-8 mb-8 flex justify-between text-gray-400 flex-col md:flex-row">
-          <p>©️2023 Lantian Wei All right reserved.</p>
+          <p>©️2023 Eric Wei All right reserved.</p>
           <div className="flex items-center md:mt-0 mt-3 ">
             Powered by
             <span className=" font-medium flex items-center text-gray-800">

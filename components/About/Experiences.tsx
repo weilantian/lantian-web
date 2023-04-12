@@ -57,7 +57,7 @@ const Experiences: FC = () => {
       <div className="mt-4">
         <Link
           className="mt-2 group text-blue-500 flex items-center font-medium"
-          href="/articles"
+          href="/catalog/case-studies"
         >
           Work-related case studies
           <IoChevronForwardCircleSharp

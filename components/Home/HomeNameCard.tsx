@@ -6,7 +6,7 @@ const HomeNameCard = () => {
       <div className="flex md:flex-row items-center flex-col-reverse justify-between  ">
         <div className="flex flex-col justify-between">
           <h1 className=" pretty-text text-center md:text-left text-5xl md:text-7xl font-bold">
-            Lantian
+            Eric
             <br />
             Wei
           </h1>

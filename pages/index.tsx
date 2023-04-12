@@ -33,14 +33,21 @@ const Home: NextPage<{
   return (
     <div className="  max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32 ">
       <NameCard />
+      <Head>
+        <title>Eric Wei</title>
+        <meta
+          name="description"
+          content="UI Engineer / Designer based in Australia"
+        />
+      </Head>
 
       <ItemList
         items={caseStudies}
         itemPageOptions={{
           title: "All Case Studies",
-          link: "/catalog/case-studies",
+          link: "/catalog/case-study",
         }}
-        path="/blog"
+        path="/post"
         title="🧐Case Studies"
       />
 
@@ -115,10 +122,6 @@ const ArticleCard: FC<{
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const articles = await client.fetch(
-    `*[ _type == "article" ]{_id , title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`
-  );
-
   const caseStudies = await client.fetch(groq`
   *[ _type == "post" && category->slug.current == "case-study"  ]{_id , title,slug , description,"category":category->title,"tags":tags[]->title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`);
 
@@ -131,7 +134,6 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      articles,
       caseStudies,
       projects,
       designWorks,

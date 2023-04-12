@@ -73,6 +73,7 @@ const Navbar: FC<{
 const BlogPage: NextPage<{
   post: {
     title: string;
+    description: string;
     category: {
       title: string;
       slug: Slug;
@@ -82,24 +83,13 @@ const BlogPage: NextPage<{
     body: [];
   };
 }> = ({ post }) => {
-  const { title, category, tags, coverImage, body } = post
-    ? post
-    : {
-        title: "Missing Title",
-        category: {
-          title: "Missing Category",
-          slug: {
-            current: "",
-          },
-        },
-        tags: [],
-        coverImage: "",
-        body: [],
-      };
+  if (!post) return null;
+  const { title, category, tags, coverImage, body, description } = post;
   return (
     <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
       <Head>
-        <title>{`${title}`} </title>
+        <title>{title}</title>
+        <meta name="description" content={description} />
       </Head>
       <div className="w-full  bg-white rounded-xl px-8 py-8">
         <Navbar category={category} />
@@ -127,6 +117,7 @@ const BlogPage: NextPage<{
 const query = groq`*[_type == "post" && slug.current == $slug][0]{
   _id,
   title,
+  description,
   "category": category->{title, slug},
   "coverImage": coverImage.asset->{url,caption},
   "tags": tags[]->title,
