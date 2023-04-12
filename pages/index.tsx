@@ -37,7 +37,7 @@ const Home: NextPage<{
         <title>Eric Wei</title>
         <meta
           name="description"
-          content="UI Engineer / Designer based in Australia"
+          content="UI Engineer / Designer based in Melbourne."
         />
       </Head>
 
