@@ -34,7 +34,7 @@ const Home: NextPage<{
     <div className="  max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32 ">
       <NameCard />
       <Head>
-        <title>Eric Wei</title>
+        <title>Eric Wei - UI Engineer / Designer</title>
         <meta
           name="description"
           content="UI Engineer / Designer based in Melbourne."
