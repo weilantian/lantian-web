@@ -3,6 +3,7 @@ import { client } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import groq from "groq";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
@@ -59,6 +60,10 @@ const ProjectPage: NextPage<{
   return (
     <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
       <Navbar />
+      <Head>
+        <title>{project.title} - Eric Wei</title>
+        <meta name="description" content={project.description} />
+      </Head>
       <div className="bg-white mt-2 px-4 gap-8 flex flex-col md:grid grid-cols-2 py-4 rounded-md ">
         <Image
           className=" object-cover w-full h-[220px]  md:h-[300px] rounded-md"

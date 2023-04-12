@@ -3,6 +3,7 @@ import { ItemListItem } from "@/lib/models";
 import { client } from "@/lib/sanity";
 import groq from "groq";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import Head from "next/head";
 import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
 import { FC } from "react";
@@ -17,6 +18,10 @@ const Catalog: NextPage<{ catalog: ItemListItem; posts: Array<ItemListItem> }> =
     if (!catalog) return null;
     return (
       <div className="max-w-[1000px] mx-auto  mt-32 px-4 md:px-6">
+        <Head>
+          <title>{catalog.title} - Eric Wei</title>
+          <meta name="description" content={catalog.description} />
+        </Head>
         <h1 className=" text-3xl font-semibold">
           {catalog.title} ({posts.length})
         </h1>
