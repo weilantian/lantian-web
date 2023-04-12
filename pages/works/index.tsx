@@ -24,7 +24,7 @@ const WorkList: FC<{ designWorks: Array<DesignWork> }> = ({ designWorks }) => {
         <title>Works - Eric Wei</title>
         <meta
           name="description"
-          content="  A collection of my design and interactive prototypes."
+          content="A collection of my design and interactive prototypes."
         />
       </Head>
 
