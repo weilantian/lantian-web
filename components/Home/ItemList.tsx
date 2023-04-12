@@ -51,24 +51,24 @@ export const ProjectCard: FC<{
           Learn More
         </span>
         <div
-          className={`md:w-[320px] px-4 py-4 h-[320px] md:h-[340px] rounded-xl bg-white ${
+          className={`md:w-[320px] px-4 py-4 h-[340px]  rounded-xl bg-white ${
             autoFillWidth ? "w-full" : "w-[260px]"
           }`}
         >
-          <div className="overflow-hidden h-[140px]  md:h-[180px] rounded-md">
+          <div className="overflow-hidden h-[140px]  md:h-[160px] rounded-md">
             <Image
               width={coverImgDimensions.width}
               height={coverImgDimensions.height}
-              className=" object-cover rounded-md"
+              className=" object-cover h-[140px]  md:h-[160px] rounded-md"
               alt={item.title + " cover image"}
               src={item.coverImage.url}
             />
           </div>
 
-          <div className="flex mt-4 h-[130px] md:h-[120px] flex-col justify-between">
+          <div className="flex mt-3 h-[130px] flex-col justify-between">
             <div>
               <h3 className="font-semibold">{item.title}</h3>
-              <p className="mt-1 text-sm font-medium text-gray-400">
+              <p className="mt-1 line-clamp-2 text-sm font-medium text-gray-400">
                 {item.description}
               </p>
             </div>

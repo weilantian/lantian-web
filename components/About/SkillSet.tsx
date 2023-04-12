@@ -12,11 +12,11 @@ const SkillSet: FC = () => {
     <AboutCard
       extra={
         <div className="flex gap-2">
-          <span className="bg-blue-500 text-white cursor-pointer py-2 rounded-full border px-3 text-xs">
+          <span className="bg-gray-100 text-gray-600 cursor-pointer py-2 rounded-full border px-3 text-xs">
             🎨 Design
           </span>
-          <span className="bg-blue-500 text-white cursor-pointer py-2 rounded-full border px-3 text-xs">
-            🎨 Design
+          <span className="bg-gray-100 text-gray-600 cursor-pointer py-2 rounded-full border px-3 text-xs">
+            💻 Development
           </span>
         </div>
       }
@@ -41,14 +41,14 @@ const SkillSet: FC = () => {
             className="bg-gradient-to-r from-amber-500 to-yellow-500"
           />
 
-          {/* <SkillCard
+          <SkillCard
             alt=""
             width={106 * 1.2}
             height={109 * 1.2}
             src="/skill-img/backend.png"
             title="Backends"
             className="bg-gradient-to-r from-indigo-700 to-violet-700"
-          /> */}
+          />
         </div>
       </div>
       <div className="mt-4">

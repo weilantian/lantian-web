@@ -47,7 +47,7 @@ const Navbar: FC<{
             transition={{ duration: 0.1 }}
             className="font-semibold"
           >
-            Lantian Wei
+            Eric Wei
           </motion.span>
         </Link>
         <div className="flex md:flex-none flex-1 md:w-auto w-full relative w-8/12 items-center">
