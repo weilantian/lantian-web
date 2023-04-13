@@ -10,12 +10,12 @@ const ProjectListPage: NextPage<{ projects: Array<ItemListItem> }> = ({
 }) => {
   return (
     <div className="max-w-[1000px] mx-auto  mt-32 px-4 md:px-6">
-      <h1 className=" text-3xl font-semibold">Works ({projects.length})</h1>
+      <h1 className=" text-3xl font-semibold">Projects ({projects.length})</h1>
       <h2 className=" text-xl mt-1 text-gray-400">
         A collection of my projects
       </h2>
       <Head>
-        <title>Works - Eric Wei</title>
+        <title>Projects - Eric Wei</title>
         <meta name="description" content="  A collection of my projects" />
       </Head>
       <section className=" grid grid-cols-1 md:grid-cols-3 mt-8 md:gap-12">

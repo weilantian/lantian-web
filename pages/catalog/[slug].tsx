@@ -59,6 +59,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
     { slug }
   );
 
+  if (!catalog) {
+    return {
+      notFound: true,
+    };
+  }
+
   const posts = await client.fetch(groq`
      *[ _type == "post"]{_id,"tags":tags[]->title, slug , title, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
   `);

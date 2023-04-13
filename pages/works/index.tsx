@@ -14,7 +14,7 @@ const WorkList: FC<{ designWorks: Array<DesignWork> }> = ({ designWorks }) => {
   const [isOpen, setIsOpen] = useState(false);
   const setWorkModalAtom = useSetAtom(workModalAtom);
   return (
-    <div className="max-w-[1000px] mx-auto  mt-32">
+    <div className="max-w-[1000px] mx-auto px-4 md:px-6 mt-32">
       <h1 className=" text-3xl font-semibold">Works ({designWorks.length})</h1>
       <h2 className=" text-xl mt-1 text-gray-400">
         A collection of my design and interactive prototypes.
@@ -28,7 +28,7 @@ const WorkList: FC<{ designWorks: Array<DesignWork> }> = ({ designWorks }) => {
         />
       </Head>
 
-      <section className=" grid mt-8 grid-cols-2 gap-6">
+      <section className=" grid mt-8 grid-cols-1 md:grid-cols-2 gap-6">
         {designWorks.map((work) => (
           <WorkItem key={work._id} {...work} />
         ))}
