@@ -73,6 +73,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       catalog,
       posts,
     },
+    revalidate: 100,
   };
 };
 
