@@ -9,12 +9,12 @@ import Link from "next/link";
 import { FC } from "react";
 
 const query = groq`
-    *[ _type == "project"]{_id,"tags":tags[]->title, slug , title, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
+    *[ _type == "project"]{_id,"tags":tags[]->title, slug , title, description, publishedAt, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
   `;
 
 const ProjectList: FC<{ projects: Array<ItemListItem> }> = ({ projects }) => {
   return (
-    <section className=" grid grid-cols-1 md:grid-cols-3 mt-8 md:gap-12">
+    <section className=" grid grid-cols-1 md:grid-cols-3 mt-4 md:gap-12">
       {projects.map((project) => (
         <ProjectCard
           autoFillWidth
@@ -32,6 +32,7 @@ const PreviewProjectList: FC<{ query: string }> = () => {
   return (
     <>
       <ProjectList projects={projects} />
+
       <Link
         className="bg-blue-500 p-6 text-white font-bold fixed bottom-0 right-0"
         href="/api/exit-preview"
@@ -54,7 +55,7 @@ const ProjectListPage: NextPage<{
       </h2>
       <Head>
         <title>Projects - Eric Wei</title>
-        <meta name="description" content="  A collection of my projects" />
+        <meta name="description" content="A collection of my projects" />
       </Head>
       {preview ? (
         <PreviewSuspense fallback="Loading...">

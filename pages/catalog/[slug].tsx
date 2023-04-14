@@ -12,7 +12,7 @@ import { IoChevronForward } from "react-icons/io5";
 
 const query = groq`
     *[ _type == "category" && $slug == slug.current ][0]{_id, "items": *[_type=='post' && references(^._id)]{
-    _id,"tags":tags[]->title, slug , title, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}
+    _id,"tags":tags[]->title, slug , title,publishedAt, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}
   } , slug ,title, description}
   `;
 interface Params extends ParsedUrlQuery {
@@ -36,7 +36,7 @@ const Header: FC<{ title: string; description: string; count?: number }> = ({
 
 const PostList: FC<{ posts: Array<ItemListItem> }> = ({ posts }) => {
   return (
-    <section className=" grid grid-cols-1 md:grid-cols-3 mt-8 md:gap-12">
+    <section className=" grid grid-cols-1 md:grid-cols-3 mt-2 md:gap-12">
       {posts.map((posts) => (
         <ProjectCard autoFillWidth path="/post" item={posts} key={posts._id} />
       ))}
