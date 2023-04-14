@@ -29,6 +29,7 @@ export interface ItemListItem {
   category?: string;
   tags?: string[];
   link?: string;
+  items?: Array<ItemListItem>;
 }
 
 export interface ItemListProps {
@@ -54,3 +55,11 @@ export interface DesignWork {
 export interface Project extends ItemListItem {
   body: any;
 }
+
+export type Post = Omit<ItemListItem, "category"> & {
+  body: any;
+  category: {
+    title: string;
+    slug: Slug;
+  };
+};

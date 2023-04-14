@@ -1,13 +1,15 @@
 import { GetStaticProps, NextPage } from "next";
 import groq from "groq";
 import { ParsedUrlQuery } from "querystring";
-import { client, urlFor } from "@/lib/sanity";
+import { client, urlFor, usePreview } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import Head from "next/head";
 import { IoChevronForward } from "react-icons/io5";
 import { FC } from "react";
 import Link from "next/link";
-import { Slug } from "@/lib/models";
+import { Post, Slug } from "@/lib/models";
+import { PreviewSuspense } from "next-sanity/preview";
+import Image from "next/image";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -30,7 +32,7 @@ const ptComponents = {
       return (
         <div className="flex w-full not-prose  bg-gray-50 flex-col rounded-md justify-center">
           <img
-            className="w-full w-auto py-4 max-h-[700px] object-contain"
+            className="w-full w-auto py-4 h-[200px] object-cover"
             alt={value.caption || " "}
             loading="lazy"
             src={urlFor(value).url()}
@@ -70,33 +72,25 @@ const Navbar: FC<{
   );
 };
 
-const BlogPage: NextPage<{
-  post: {
-    title: string;
-    description: string;
-    category: {
-      title: string;
-      slug: Slug;
-    };
-    tags: Array<string>;
-    coverImage: string;
-    body: [];
-  };
-}> = ({ post }) => {
-  if (!post) return null;
-  const { title, category, tags, coverImage, body, description } = post;
+const BlogContent: FC<{ post: Post }> = ({
+  post: { tags, body, category, title, coverImage },
+}) => {
   return (
-    <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-      </Head>
+    <>
       <div className="w-full  bg-white rounded-xl px-8 py-8">
         <Navbar category={category} />
-        <h1 className=" mt-4 font-semibold text-4xl">{title}</h1>
-
+        <div className="mt-4">
+          <Image
+            className="rounded-lg object-cover h-[240px]"
+            alt={title + " cover image" || " "}
+            height={coverImage.metadata.dimensions.height}
+            width={coverImage.metadata.dimensions.width}
+            src={coverImage.url}
+          />
+        </div>
+        <h1 className=" mt-6 font-semibold text-4xl">{title}</h1>
         <div className="flex flex-wrap gap-3  mt-4">
-          {tags.map((tag) => (
+          {tags?.map((tag) => (
             <span
               key={tag}
               className="text-sm bg-gray-100 text-gray-500 px-3 py-2 rounded-lg font-semibold"
@@ -105,11 +99,50 @@ const BlogPage: NextPage<{
             </span>
           ))}
         </div>
-
         <article className="mt-8 pt-6 border-gray-200 prose-sm  md:prose md:max-w-none max-w-none   border-t">
           <PortableText value={body} components={ptComponents} />
         </article>
       </div>
+    </>
+  );
+};
+
+const PreviewContent: FC<{ slug: string }> = ({ slug }) => {
+  const post = usePreview(null, query, { slug });
+  return (
+    <>
+      <BlogContent post={post} />
+      <Link
+        className="bg-blue-500 p-6 text-white font-bold fixed bottom-0 right-0"
+        href="/api/exit-preview"
+      >
+        Exit Preview
+      </Link>
+    </>
+  );
+};
+
+const BlogPage: NextPage<{
+  post: Post;
+  preview: boolean;
+  slug: string;
+}> = ({ post, preview, slug }) => {
+  const { title, category, tags, coverImage, body, description } = post ?? {};
+  return (
+    <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
+      {!preview && (
+        <Head>
+          <title>{title}</title>
+          <meta name="description" content={description} />
+        </Head>
+      )}
+      {preview ? (
+        <PreviewSuspense fallback="Loading...">
+          <PreviewContent slug={slug} />
+        </PreviewSuspense>
+      ) : (
+        post && <BlogContent post={post} />
+      )}
     </div>
   );
 };
@@ -119,7 +152,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   title,
   description,
   "category": category->{title, slug},
-  "coverImage": coverImage.asset->{url,caption},
+  "coverImage": coverImage.asset->{url,caption,metadata},
   "tags": tags[]->title,
   body,
 }`;
@@ -136,6 +169,17 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug = "" } = context.params as Params;
+
+  if (context.preview) {
+    return {
+      props: {
+        preview: true,
+        post: null,
+        slug: slug,
+      },
+    };
+  }
+
   const post = await client.fetch(query, { slug });
 
   if (!post) {
@@ -147,6 +191,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       post,
+      preview: false,
     },
     revalidate: 100,
   };
