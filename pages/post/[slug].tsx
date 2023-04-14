@@ -32,7 +32,7 @@ const ptComponents = {
       return (
         <div className="flex w-full not-prose  bg-gray-50 flex-col rounded-md justify-center">
           <img
-            className="w-full w-auto py-4 h-[200px] object-cover"
+            className="w-full py-4 h-[200px] object-cover"
             alt={value.caption || " "}
             loading="lazy"
             src={urlFor(value).url()}
@@ -73,7 +73,7 @@ const Navbar: FC<{
 };
 
 const BlogContent: FC<{ post: Post }> = ({
-  post: { tags, body, category, title, coverImage },
+  post: { tags, body, category, title, coverImage, publishedAt },
 }) => {
   return (
     <>
@@ -81,19 +81,22 @@ const BlogContent: FC<{ post: Post }> = ({
         <Navbar category={category} />
         <div className="mt-4">
           <Image
-            className="rounded-lg object-cover h-[240px]"
+            className="rounded-lg object-cover h-[260px]"
             alt={title + " cover image" || " "}
             height={coverImage.metadata.dimensions.height}
             width={coverImage.metadata.dimensions.width}
             src={coverImage.url}
           />
         </div>
-        <h1 className=" mt-6 font-semibold text-4xl">{title}</h1>
+        <h1 className=" mt-6 font-semibold text-3xl md:text-4xl">{title}</h1>
+        <p className="mt-2 text-gray-500">
+          {new Date(publishedAt).toLocaleDateString()}
+        </p>
         <div className="flex flex-wrap gap-3  mt-4">
           {tags?.map((tag) => (
             <span
               key={tag}
-              className="text-sm bg-gray-100 text-gray-500 px-3 py-2 rounded-lg font-semibold"
+              className="text-xs bg-gray-100 text-gray-500 px-3 py-2 rounded-lg font-semibold"
             >
               {tag}
             </span>
@@ -155,6 +158,7 @@ const query = groq`*[_type == "post" && slug.current == $slug][0]{
   "coverImage": coverImage.asset->{url,caption,metadata},
   "tags": tags[]->title,
   body,
+  publishedAt,
 }`;
 
 export const getStaticPaths = async () => {

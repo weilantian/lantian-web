@@ -15,7 +15,7 @@ import { BiLinkExternal } from "react-icons/bi";
 import { IoChevronForward } from "react-icons/io5";
 
 const query = groq`
-   *[ _type == "project" && $slug == slug.current ][0]{_id, slug ,body ,link,"tags": tags[]->title, title, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
+   *[ _type == "project" && $slug == slug.current ][0]{_id, slug ,body ,link,"tags": tags[]->title, title, description, publishedAt, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
     `;
 
 interface Params extends ParsedUrlQuery {
@@ -56,24 +56,29 @@ const ProjectContent: FC<{ project: Project }> = ({ project }) => {
 
         <div className="mt-2">
           <h1 className="font-semibold text-2xl">{project.title}</h1>
-          <div className="flex flex-wrap gap-3  mt-4">
+          <p className=" mt-1 text-gray-600 text-sm">
+            {new Date(project.publishedAt).toLocaleDateString()}
+          </p>
+          <div className="flex flex-wrap gap-3  mt-2">
             {project.tags?.map((tag) => (
               <span
                 key={tag}
-                className="text-sm bg-gray-100 text-gray-500 px-3 py-2 rounded-lg font-semibold"
+                className="text-xs bg-gray-100 text-gray-500 px-3 py-2 rounded-lg font-semibold"
               >
                 {tag}
               </span>
             ))}
           </div>
-          <a
-            target="_blank"
-            rel="noreferrer"
-            className=" flex items-center gap-2 mt-6 font-medium text-blue-500"
-            href={project.link}
-          >
-            <BiLinkExternal /> Launch Project
-          </a>
+          {project.link && (
+            <a
+              target="_blank"
+              rel="noreferrer"
+              className=" flex items-center gap-2 mt-6 font-medium text-blue-500"
+              href={project.link}
+            >
+              <BiLinkExternal /> Launch Project
+            </a>
+          )}
 
           <div className=" mt-4 pt-4 border-t">
             <p className=" text-gray-500">{project.description}</p>
@@ -100,6 +105,10 @@ const PreviewProject: FC<{ query: string; slug: string }> = ({
   return (
     <>
       {project && <ProjectContent project={project} />}
+      <Head>
+        <title>[PREVIEWING] {project.title} - Eric Wei</title>
+        <meta name="description" content={project.description} />
+      </Head>
       <Link
         className="bg-blue-500 p-6 text-white font-bold fixed bottom-0 right-0"
         href="/api/exit-preview"

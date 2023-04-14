@@ -30,6 +30,7 @@ export interface ItemListItem {
   tags?: string[];
   link?: string;
   items?: Array<ItemListItem>;
+  publishedAt: string;
 }
 
 export interface ItemListProps {

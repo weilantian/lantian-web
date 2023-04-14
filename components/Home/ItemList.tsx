@@ -3,6 +3,7 @@ import { IoChevronForwardCircleSharp, IoOpenOutline } from "react-icons/io5";
 import Image from "next/image";
 import { FC } from "react";
 import { ItemListItem, ItemListProps } from "@/lib/models";
+import { format } from "date-fns";
 const ItemList: FC<ItemListProps> = ({
   path,
   items,
@@ -11,7 +12,7 @@ const ItemList: FC<ItemListProps> = ({
 }) => {
   return (
     <div>
-      <div className="flex mt-6 justify-between">
+      <div className="flex mt-4 justify-between">
         <h3 className=" text-xl font-semibold">{title}</h3>
         {itemPageOptions && (
           <Link
@@ -45,13 +46,13 @@ export const ProjectCard: FC<{
   const coverImgDimensions = item.coverImage.metadata.dimensions;
   return (
     <Link href={`${path}/${item.slug.current}`}>
-      <div className={`mt-4 group cursor-pointer relative`}>
+      <div className={` group cursor-pointer relative`}>
         <span className="absolute opacity-0 translate-x-10 scale-75 group-hover:scale-100 duration-200 transition-all group-hover:opacity-100 group-hover:translate-x-0 flex items-center text-sm right-0 top-2 z-10 bg-blue-500 text-white rounded-full px-4 py-1">
           <IoOpenOutline className="mr-1" />
           Learn More
         </span>
         <div
-          className={`md:w-[320px] px-4 py-4 h-[340px]  rounded-xl bg-white ${
+          className={`md:w-[320px] px-4 py-4 h-[355px]  rounded-xl bg-white ${
             autoFillWidth ? "w-full" : "w-[260px]"
           }`}
         >
@@ -68,6 +69,9 @@ export const ProjectCard: FC<{
           <div className="flex mt-3 h-[130px] flex-col justify-between">
             <div>
               <h3 className="font-semibold">{item.title}</h3>
+              <p className="text-xs mt-1 text-gray-500">
+                {new Date(item.publishedAt).toLocaleDateString()}
+              </p>
               <p className="mt-1 line-clamp-2 text-sm font-medium text-gray-400">
                 {item.description}
               </p>

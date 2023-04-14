@@ -67,7 +67,7 @@ const Footer: FC = () => {
             Powered by
             <span className=" font-medium flex items-center text-gray-800">
               <SiNextdotjs className="ml-2 mr-1" />
-              NextJs
+              Next.js
             </span>
           </div>
         </div>
