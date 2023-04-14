@@ -1,8 +1,10 @@
 import { ptComponents } from "@/components/ptComponents";
-import { client } from "@/lib/sanity";
+import { Project } from "@/lib/models";
+import { client, usePreview } from "@/lib/sanity";
 import { PortableText } from "@portabletext/react";
 import groq from "groq";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { PreviewSuspense } from "next-sanity/preview";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,6 +13,10 @@ import { FC } from "react";
 
 import { BiLinkExternal } from "react-icons/bi";
 import { IoChevronForward } from "react-icons/io5";
+
+const query = groq`
+   *[ _type == "project" && $slug == slug.current ][0]{_id, slug ,body ,link,"tags": tags[]->title, title, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
+    `;
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -36,34 +42,9 @@ const Navbar: FC = () => {
   );
 };
 
-const ProjectPage: NextPage<{
-  project: {
-    _id: string;
-    slug: string;
-    title: string;
-    description: string;
-    body: any;
-    tags: string[];
-    link: string;
-    coverImage: {
-      url: string;
-      metadata: {
-        dimensions: {
-          width: number;
-          height: number;
-        };
-      };
-    };
-  };
-}> = ({ project }) => {
-  if (!project) return null;
+const ProjectContent: FC<{ project: Project }> = ({ project }) => {
   return (
-    <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
-      <Navbar />
-      <Head>
-        <title>{project.title} - Eric Wei</title>
-        <meta name="description" content={project.description} />
-      </Head>
+    <>
       <div className="bg-white mt-2 px-4 gap-8 flex flex-col md:grid grid-cols-2 py-4 rounded-md ">
         <Image
           className=" object-cover w-full h-[220px]  md:h-[300px] rounded-md"
@@ -76,7 +57,7 @@ const ProjectPage: NextPage<{
         <div className="mt-2">
           <h1 className="font-semibold text-2xl">{project.title}</h1>
           <div className="flex flex-wrap gap-3  mt-4">
-            {project.tags.map((tag) => (
+            {project.tags?.map((tag) => (
               <span
                 key={tag}
                 className="text-sm bg-gray-100 text-gray-500 px-3 py-2 rounded-lg font-semibold"
@@ -107,6 +88,52 @@ const ProjectPage: NextPage<{
           </article>
         </div>
       )}
+    </>
+  );
+};
+
+const PreviewProject: FC<{ query: string; slug: string }> = ({
+  query,
+  slug,
+}) => {
+  const project = usePreview(null, query, { slug });
+  return (
+    <>
+      {project && <ProjectContent project={project} />}
+      <Link
+        className="bg-blue-500 p-6 text-white font-bold fixed bottom-0 right-0"
+        href="/api/exit-preview"
+      >
+        Exit Preview
+      </Link>
+    </>
+  );
+};
+
+const ProjectPage: NextPage<{
+  preview: boolean;
+  data?: {
+    project: Project;
+    slug: string;
+  };
+}> = ({ preview, data }) => {
+  return (
+    <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
+      <Navbar />
+      {data?.project && (
+        <Head>
+          <title>{data.project.title} - Eric Wei</title>
+          <meta name="description" content={data.project.description} />
+        </Head>
+      )}
+
+      {preview && data?.slug ? (
+        <PreviewSuspense fallback="Loading...">
+          <PreviewProject slug={data?.slug} query={query} />
+        </PreviewSuspense>
+      ) : (
+        data?.project && <ProjectContent project={data.project} />
+      )}
     </div>
   );
 };
@@ -122,16 +149,34 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (context) => {
+  if (context.preview) {
+    return {
+      props: {
+        preview: context.preview ?? false,
+        data: {
+          project: null,
+          slug: context.params?.slug as string,
+        },
+      },
+    };
+  }
+
   const { slug = "" } = context.params as Params;
-  const project = await client.fetch(
-    groq`
-   *[ _type == "project" && $slug == slug.current ][0]{_id, slug ,body ,link,"tags": tags[]->title, title, description, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
-    `,
-    { slug }
-  );
+  const project = await client.fetch(query, { slug });
+
+  if (!project) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
     props: {
-      project,
+      preview: context.preview ?? false,
+      data: {
+        project,
+        slug,
+      },
     },
     revalidate: 100,
   };

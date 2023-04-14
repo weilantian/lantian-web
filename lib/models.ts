@@ -28,6 +28,7 @@ export interface ItemListItem {
   description?: string;
   category?: string;
   tags?: string[];
+  link?: string;
 }
 
 export interface ItemListProps {
@@ -48,4 +49,8 @@ export interface DesignWork {
   description: string;
   link: string | null;
   publishedAt: string | null;
+}
+
+export interface Project extends ItemListItem {
+  body: any;
 }
