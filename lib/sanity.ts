@@ -4,7 +4,11 @@ import { definePreview } from "next-sanity/preview";
 
 import imageUrlBuilder from "@sanity/image-url";
 
-const dataset = process.env.NEXT_PUBLIC_FORCE_PRODUCTION ? "production" : "dev";
+const dataset = process.env.NEXT_PUBLIC_FORCE_PRODUCTION
+  ? "production"
+  : process.env.NODE_ENV === "development"
+  ? "dev"
+  : "production";
 
 export const client = createClient({
   projectId: "s55i3zss",
