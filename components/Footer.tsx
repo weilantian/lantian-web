@@ -22,7 +22,7 @@ const Footer: FC = () => {
               className=" rounded-full flex text-slate-600  items-center justify-center w-12 h-12 border"
               target="_blank"
               rel="noreferrer"
-              href="https://github.com/weiEric"
+              href="https://github.com/weilantian"
             >
               <IoLogoGithub size={22} />
             </a>
@@ -38,7 +38,7 @@ const Footer: FC = () => {
               className=" rounded-full text-slate-600 flex items-center justify-center w-12 h-12 border"
               target="_blank"
               rel="noreferrer"
-              href="https://www.instagram.com/Eric02/"
+              href="https://www.instagram.com/lantian02/"
             >
               <IoLogoInstagram size={22} />
             </a>

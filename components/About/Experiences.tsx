@@ -53,19 +53,6 @@ const Experiences: FC = () => {
         duration="2019 - 2021"
         img={<Image width={47} height={47} src="/teamer-logo.png" alt="" />}
       />
-
-      <div className="mt-4">
-        <Link
-          className="mt-2 group text-blue-500 flex items-center font-medium"
-          href="/catalog/case-studies"
-        >
-          Work-related case studies
-          <IoChevronForwardCircleSharp
-            size={18}
-            className="inline-block ml-1 duration-75 transition-transform group-hover:translate-x-1"
-          />
-        </Link>
-      </div>
     </AboutCard>
   );
 };
