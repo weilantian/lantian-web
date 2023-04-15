@@ -14,7 +14,7 @@ const query = groq`
 
 const ProjectList: FC<{ projects: Array<ItemListItem> }> = ({ projects }) => {
   return (
-    <section className=" grid grid-cols-1 md:grid-cols-3 mt-4 md:gap-12">
+    <section className=" grid grid-cols-1 md:grid-cols-3 mt-4 md:gap-x-12 gap-y-4 md:gap-y-4">
       {projects.map((project) => (
         <ProjectCard
           autoFillWidth

@@ -80,13 +80,17 @@ const BlogContent: FC<{ post: Post }> = ({
       <div className="w-full  bg-white rounded-xl px-8 py-8">
         <Navbar category={category} />
         <div className="mt-4">
-          <Image
-            className="rounded-lg object-cover h-[260px]"
-            alt={title + " cover image" || " "}
-            height={coverImage.metadata.dimensions.height}
-            width={coverImage.metadata.dimensions.width}
-            src={coverImage.url}
-          />
+          {coverImage ? (
+            <Image
+              className="rounded-lg object-cover h-[260px]"
+              alt={title + " cover image" || " "}
+              height={coverImage.metadata.dimensions.height}
+              width={coverImage.metadata.dimensions.width}
+              src={coverImage.url}
+            />
+          ) : (
+            <div className="rounded-lg object-cover h-[260px] bg-gray-100"></div>
+          )}
         </div>
         <h1 className=" mt-6 font-semibold text-3xl md:text-4xl">{title}</h1>
         <p className="mt-2 text-gray-500">
@@ -102,7 +106,7 @@ const BlogContent: FC<{ post: Post }> = ({
             </span>
           ))}
         </div>
-        <article className="mt-8 pt-6 border-gray-200 prose-sm  md:prose md:max-w-none max-w-none   border-t">
+        <article className="mt-8 pt-6 border-gray-200 prose-sm  md:prose  max-w-none   border-t">
           <PortableText value={body} components={ptComponents} />
         </article>
       </div>

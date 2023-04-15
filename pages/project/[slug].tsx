@@ -46,13 +46,17 @@ const ProjectContent: FC<{ project: Project }> = ({ project }) => {
   return (
     <>
       <div className="bg-white mt-2 px-4 gap-8 flex flex-col md:grid grid-cols-2 py-4 rounded-md ">
-        <Image
-          className=" object-cover w-full h-[220px]  md:h-[300px] rounded-md"
-          src={project.coverImage.url}
-          height={project.coverImage.metadata.dimensions.height}
-          width={project.coverImage.metadata.dimensions.width}
-          alt={project.title + "cover image"}
-        />
+        {project.coverImage ? (
+          <Image
+            className=" object-cover w-full h-[220px]  md:h-[300px] rounded-md"
+            src={project.coverImage.url}
+            height={project.coverImage.metadata.dimensions.height}
+            width={project.coverImage.metadata.dimensions.width}
+            alt={project.title + "cover image"}
+          />
+        ) : (
+          <div className="bg-gray-100 w-full h-[220px]  md:h-[300px] rounded-md"></div>
+        )}
 
         <div className="mt-2">
           <h1 className="font-semibold text-2xl">{project.title}</h1>
@@ -87,8 +91,8 @@ const ProjectContent: FC<{ project: Project }> = ({ project }) => {
       </div>
 
       {project.body && (
-        <div className="mt-4 px-8 py-4 rounded-md bg-white">
-          <article className="md:prose prose-sm ">
+        <div className="mt-4 px-4 py-4 rounded-md bg-white">
+          <article className="md:prose prose-sm md:max-w-none max-w-none ">
             <PortableText value={project.body} components={ptComponents} />
           </article>
         </div>

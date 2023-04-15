@@ -43,9 +43,9 @@ export const ProjectCard: FC<{
   path: string;
   autoFillWidth?: boolean;
 }> = ({ path, item, autoFillWidth }) => {
-  const coverImgDimensions = item.coverImage.metadata.dimensions;
+  const coverImgDimensions = item.coverImage?.metadata.dimensions;
   return (
-    <Link href={`${path}/${item.slug.current}`}>
+    <Link href={`${path}/${item.slug?.current}`}>
       <div className={` group cursor-pointer relative`}>
         <span className="absolute opacity-0 translate-x-10 scale-75 group-hover:scale-100 duration-200 transition-all group-hover:opacity-100 group-hover:translate-x-0 flex items-center text-sm right-0 top-2 z-10 bg-blue-500 text-white rounded-full px-4 py-1">
           <IoOpenOutline className="mr-1" />
@@ -57,13 +57,17 @@ export const ProjectCard: FC<{
           }`}
         >
           <div className="overflow-hidden h-[140px]  md:h-[160px] rounded-md">
-            <Image
-              width={coverImgDimensions.width}
-              height={coverImgDimensions.height}
-              className=" object-cover h-[140px]  md:h-[160px] rounded-md"
-              alt={item.title + " cover image"}
-              src={item.coverImage.url}
-            />
+            {item.coverImage ? (
+              <Image
+                width={coverImgDimensions?.width}
+                height={coverImgDimensions?.height}
+                className=" object-cover h-[140px]  md:h-[160px] rounded-md"
+                alt={item.title + " cover image"}
+                src={item.coverImage?.url}
+              />
+            ) : (
+              <div className="h-[140px]  md:h-[160px] rounded-md bg-gray-100"></div>
+            )}
           </div>
 
           <div className="flex mt-3 h-[130px] flex-col justify-between">
