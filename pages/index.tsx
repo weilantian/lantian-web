@@ -123,13 +123,13 @@ const ArticleCard: FC<{
 
 export const getStaticProps: GetStaticProps = async () => {
   const caseStudies = await client.fetch(groq`
-  *[ _type == "post" && category->slug.current == "case-study"  ]{_id , title,slug , description,"category":category->title,"tags":tags[]->title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`);
+  *[ _type == "post" && category->slug.current == "case-study"  ] | order(publishedAt desc) {_id , title,slug, publishedAt, description,"category":category->title,"tags":tags[]->title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`);
 
   const projects = await client.fetch(groq`
-  *[ _type == "project"  ]{_id, slug , title, description,"category":category->title,"tags":tags[]->title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`);
+  *[ _type == "project"  ] | order(publishedAt desc) {_id, slug , title,publishedAt , description,"category":category->title,"tags":tags[]->title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`);
 
   const designWorks = await client.fetch(groq`
-  *[ _type == "designWork"   ]{_id, slug , title, description, "image": image.asset->{url,metadata{dimensions}}}
+  *[ _type == "designWork"   ] | order(publishedAt desc) {_id, slug ,publishedAt , title, description, "image": image.asset->{url,metadata{dimensions}}}
   `);
 
   return {
