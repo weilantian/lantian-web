@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Post, Slug } from "@/lib/models";
 import { PreviewSuspense } from "next-sanity/preview";
 import Image from "next/image";
+import { formatDate } from "@/lib/utils";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
@@ -93,9 +94,7 @@ const BlogContent: FC<{ post: Post }> = ({
           )}
         </div>
         <h1 className=" mt-6 font-semibold text-3xl md:text-4xl">{title}</h1>
-        <p className="mt-2 text-gray-500">
-          {new Date(publishedAt).toLocaleDateString()}
-        </p>
+        <p className="mt-2 text-gray-500">{formatDate(publishedAt)}</p>
         <div className="flex flex-wrap gap-3  mt-4">
           {tags?.map((tag) => (
             <span

@@ -9,7 +9,7 @@ import Link from "next/link";
 import { FC } from "react";
 
 const query = groq`
-    *[ _type == "project"]{_id,"tags":tags[]->title, slug , title, description, publishedAt, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
+    *[ _type == "project"] | order(publishedAt desc) {_id,"tags":tags[]->title, slug , title, description, publishedAt, "coverImage": coverImage.asset->{url,metadata{dimensions}}}
   `;
 
 const ProjectList: FC<{ projects: Array<ItemListItem> }> = ({ projects }) => {

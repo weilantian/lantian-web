@@ -1,6 +1,7 @@
 import { ptComponents } from "@/components/ptComponents";
 import { Project } from "@/lib/models";
 import { client, usePreview } from "@/lib/sanity";
+import { formatDate } from "@/lib/utils";
 import { PortableText } from "@portabletext/react";
 import groq from "groq";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
@@ -61,7 +62,7 @@ const ProjectContent: FC<{ project: Project }> = ({ project }) => {
         <div className="mt-2">
           <h1 className="font-semibold text-2xl">{project.title}</h1>
           <p className=" mt-1 text-gray-600 text-sm">
-            {new Date(project.publishedAt).toLocaleDateString()}
+            {formatDate(project.publishedAt)}
           </p>
           <div className="flex flex-wrap gap-3  mt-2">
             {project.tags?.map((tag) => (
