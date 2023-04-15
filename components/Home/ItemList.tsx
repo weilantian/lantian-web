@@ -28,7 +28,7 @@ const ItemList: FC<ItemListProps> = ({
           </Link>
         )}
       </div>
-      <div className=" overflow-x-scroll pb-3">
+      <div className=" overflow-x-scroll mt-3 pb-3">
         <div className="flex gap-4">
           {items.map((item) => (
             <ProjectCard path={path} item={item} key={item._id} />
@@ -54,7 +54,7 @@ export const ProjectCard: FC<{
         </span>
         <div
           className={`md:w-[320px] px-4 py-4 h-[355px]  rounded-xl bg-white ${
-            autoFillWidth ? "w-full" : "w-[260px]"
+            autoFillWidth ? "w-full" : "w-[320px]"
           }`}
         >
           <div className="overflow-hidden h-[140px]  md:h-[160px] rounded-md">

@@ -41,7 +41,7 @@ const Home: NextPage<{
         />
       </Head>
 
-      {caseStudies.length && (
+      {caseStudies.length > 0 && (
         <ItemList
           items={caseStudies}
           itemPageOptions={{
@@ -53,7 +53,7 @@ const Home: NextPage<{
         />
       )}
 
-      {projects.length && (
+      {projects.length > 0 && (
         <ItemList
           items={projects}
           itemPageOptions={{
