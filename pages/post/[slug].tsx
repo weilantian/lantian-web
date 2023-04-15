@@ -134,6 +134,9 @@ const BlogPage: NextPage<{
   slug: string;
 }> = ({ post, preview, slug }) => {
   const { title, category, tags, coverImage, body, description } = post ?? {};
+  if (!preview && !post) {
+    return null;
+  }
   return (
     <div className="max-w-[1000px] px-4 md:px-6  mx-auto gap-5 mt-32">
       {!preview && (
