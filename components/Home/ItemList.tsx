@@ -3,7 +3,8 @@ import { IoChevronForwardCircleSharp, IoOpenOutline } from "react-icons/io5";
 import Image from "next/image";
 import { FC } from "react";
 import { ItemListItem, ItemListProps } from "@/lib/models";
-import { format } from "date-fns";
+import { format, formatDistanceToNow } from "date-fns";
+import { formatDate } from "@/lib/utils";
 const ItemList: FC<ItemListProps> = ({
   path,
   items,
@@ -74,7 +75,7 @@ export const ProjectCard: FC<{
             <div>
               <h3 className="font-semibold">{item.title}</h3>
               <p className="text-xs mt-1 text-gray-500">
-                {new Date(item.publishedAt).toLocaleDateString()}
+                {formatDate(item.publishedAt)}
               </p>
               <p className="mt-1 line-clamp-2 text-sm font-medium text-gray-400">
                 {item.description}
