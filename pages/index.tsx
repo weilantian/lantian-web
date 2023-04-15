@@ -41,25 +41,29 @@ const Home: NextPage<{
         />
       </Head>
 
-      <ItemList
-        items={caseStudies}
-        itemPageOptions={{
-          title: "All Case Studies",
-          link: "/catalog/case-study",
-        }}
-        path="/post"
-        title="🧐Case Studies"
-      />
+      {caseStudies.length && (
+        <ItemList
+          items={caseStudies}
+          itemPageOptions={{
+            title: "All Case Studies",
+            link: "/catalog/case-study",
+          }}
+          path="/post"
+          title="🧐Case Studies"
+        />
+      )}
 
-      <ItemList
-        items={projects}
-        itemPageOptions={{
-          title: "All Projects",
-          link: "/project",
-        }}
-        path="/project"
-        title="Projects"
-      />
+      {projects.length && (
+        <ItemList
+          items={projects}
+          itemPageOptions={{
+            title: "All Projects",
+            link: "/project",
+          }}
+          path="/project"
+          title="Projects"
+        />
+      )}
 
       <DesignWorkList items={designWorks} />
 
