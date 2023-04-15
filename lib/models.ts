@@ -21,9 +21,9 @@ interface Image {
 }
 
 export interface ItemListItem {
-  slug: Slug;
+  slug?: Slug;
   _id: string;
-  coverImage: Image;
+  coverImage?: Image | null;
   title: string;
   description?: string;
   category?: string;
