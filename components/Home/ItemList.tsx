@@ -53,7 +53,7 @@ export const ProjectCard: FC<{
           Learn More
         </span>
         <div
-          className={`md:w-[320px] px-4 py-4 h-[330px]  rounded-xl bg-white ${
+          className={`md:w-[320px] px-4 py-4 h-[315px] md:h-[330px]  rounded-xl bg-white ${
             autoFillWidth ? "w-full" : "w-[320px]"
           }`}
         >
