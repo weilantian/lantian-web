@@ -1,6 +1,11 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FC } from "react";
-import { IoArrowBack, IoArrowForward } from "react-icons/io5";
+import {
+  IoArrowBack,
+  IoArrowForward,
+  IoClose,
+  IoCloseCircle,
+} from "react-icons/io5";
 import { SiDribbble } from "react-icons/si";
 
 import Image from "next/image";
@@ -47,7 +52,7 @@ const WorkModal: FC<{}> = () => {
         >
           <motion.section
             onClick={(e) => e.stopPropagation()}
-            className="bg-white py-12 overflow-y-scroll  rounded-xl mt-12 h-full w-full"
+            className="bg-white pt-6 overflow-y-scroll  rounded-xl mt-12 h-full w-full"
           >
             {isLoading ? (
               <div className="flex w-full h-full  items-center justify-center">
@@ -55,6 +60,15 @@ const WorkModal: FC<{}> = () => {
               </div>
             ) : (
               <div className=" mx-auto px-4 max-w-[1000px] ">
+                <div className=" flex  justify-end w-full">
+                  <button
+                    onClick={() => setModalAtom({ viewingWorkId: null })}
+                    className="font-medium text-lg flex items-center gap-1 text-blue-600"
+                  >
+                    <IoCloseCircle />
+                    Close
+                  </button>
+                </div>
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className=" font-semibold text-xl">{data?.title}</h3>
