@@ -27,7 +27,7 @@ const NameCard: FC = () => {
         </div>
         <a
           href="mailto:hi@ericwei.fyi"
-          className=" mt-8 flex hidden md:flex z-30 text-sm  items-center rounded-full text-white bg-blue-500 px-4 py-2"
+          className=" mt-8 flex   z-30 text-sm  items-center rounded-full text-white bg-blue-500 px-4 py-2"
         >
           <IoMail className="mr-2" />
           Contact

@@ -89,6 +89,13 @@ const Navbar: FC<{
             <span>About</span>
             <IoChevronForward className="text-gray-500" />
           </Link>
+          <a
+            href="mailto:hi@ericwei.fyi"
+            className="w-full flex justify-center items-center gap-2 px-4 py-3 text-white rounded-xl bg-blue-500"
+          >
+            <IoMail />
+            Contact
+          </a>
         </div>
       </motion.div>
       <nav
@@ -153,7 +160,7 @@ const Navbar: FC<{
 
             <a
               href="mailto:hi@ericwei.fyi"
-              className=" flex hidden md:flex z-30  items-center rounded-full text-white bg-blue-500 px-4 py-2"
+              className="  hidden md:flex z-30  items-center rounded-full text-white bg-blue-500 px-4 py-2"
             >
               <IoMail className="mr-2" />
               Contact
