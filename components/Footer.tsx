@@ -45,8 +45,6 @@ const Footer: FC = () => {
           </div>
         </div>
         <div className="mt-8 max-w-[320px]">
-        
-
           <form className=" mt-3 flex items-center">
             <input
               type="email"
@@ -56,7 +54,7 @@ const Footer: FC = () => {
             <button className="ml-2 px-4 0 bg-blue-500 text-sm text-white rounded-full py-2">
               Subscribe
             </button>
-          </form> */}
+          </form>
         </div>
         <div className="mt-8 mb-8 flex justify-between text-gray-400 flex-col md:flex-row">
           <p>©️2023 Eric Wei All right reserved.</p>
