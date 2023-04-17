@@ -48,11 +48,11 @@ const WorkModal: FC<{}> = () => {
             duration: 0.3,
           }}
           onClick={() => setModalAtom({ viewingWorkId: null })}
-          className="fixed top-0 left-0 w-screen h-screen bg-opacity-30 z-50 bg-black"
+          className="fixed top-0  left-0 w-screen h-screen bg-opacity-30 z-50 bg-black"
         >
           <motion.section
             onClick={(e) => e.stopPropagation()}
-            className="bg-white pt-6 overflow-y-scroll  rounded-xl mt-12 h-full w-full"
+            className="bg-white pt-6 pb-24 overflow-y-scroll  rounded-xl mt-12 h-full w-full"
           >
             {isLoading ? (
               <div className="flex w-full h-full  items-center justify-center">
@@ -63,7 +63,7 @@ const WorkModal: FC<{}> = () => {
                 <div className=" flex  justify-end w-full">
                   <button
                     onClick={() => setModalAtom({ viewingWorkId: null })}
-                    className="font-medium text-lg flex items-center gap-1 text-blue-600"
+                    className="font-medium text-lg mb-6 flex items-center gap-1 text-blue-600"
                   >
                     <IoCloseCircle />
                     Close
