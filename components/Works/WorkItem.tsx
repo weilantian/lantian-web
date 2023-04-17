@@ -4,7 +4,7 @@ import { FC } from "react";
 import Image from "next/image";
 import { DesignWork } from "@/lib/models";
 
-const WorkItem: FC<DesignWork> = ({ _id, image }) => {
+const WorkItem: FC<DesignWork> = ({ title, _id, image }) => {
   const setModalAtom = useSetAtom(workModalAtom);
   return (
     <div
@@ -29,7 +29,7 @@ const WorkItem: FC<DesignWork> = ({ _id, image }) => {
         className=" text-white px-8 py-8 transition-opacity duration-150 absolute opacity-0 group-hover:opacity-100"
       >
         <h3 className=" group-hover:translate-y-0 translate-y-10 transition-transform duration-150 text-lg font-medium">
-          Footer Locker App Design
+          {title}
         </h3>
       </div>
       <Image

@@ -137,7 +137,7 @@ const ProjectPage: NextPage<{
       <Navbar />
       {data?.project && (
         <Head>
-          <title>{data.project.title} - Eric Wei</title>
+          <title>{`${data.project.title}`} - Eric Wei</title>
           <meta name="description" content={data.project.description} />
         </Head>
       )}
