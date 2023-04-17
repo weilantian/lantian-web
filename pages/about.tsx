@@ -23,7 +23,7 @@ const About: NextPage<{
   const setNav = useSetAtom(navAtom);
 
   useEffect(() => {
-    setNav((prev) => ({ ...prev, showName: false }));
+    setNav((prev) => ({ ...prev, showName: true }));
   }, []);
   return (
     <div>
