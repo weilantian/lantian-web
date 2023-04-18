@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://ericwei.fyi
+
+# Sitemaps
+Sitemap: https://ericwei.fyi/sitemap.xml
