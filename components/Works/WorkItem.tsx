@@ -4,15 +4,19 @@ import { FC } from "react";
 import Image from "next/image";
 import { DesignWork } from "@/lib/models";
 
-const WorkItem: FC<DesignWork> = ({ title, _id, image }) => {
+const WorkItem: FC<DesignWork> = ({ title, _id, image, link }) => {
   const setModalAtom = useSetAtom(workModalAtom);
   return (
     <div
-      onClick={() =>
+      onClick={() => {
+        if (link) {
+          window.open(link, "_blank");
+          return;
+        }
         setModalAtom({
           viewingWorkId: _id,
-        })
-      }
+        });
+      }}
       className="bg-white group cursor-pointer w-full relative overflow-hidden rounded-lg"
     >
       <div

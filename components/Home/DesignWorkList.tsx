@@ -29,7 +29,7 @@ const DesignWorkList: FC<{items:Array<DesignWork>}> = ({items}) => {
   },[])
   return <div>
         <div className="flex mb-6 mt-8 justify-between">
-          <h3 className=" text-xl font-semibold">Design Works</h3>
+          <h3 className=" text-xl font-semibold">Design Works + Case Studies</h3>
           <Link className="text-blue-500 group font-medium" href="/works">
             All Design Works
             <IoChevronForwardCircleSharp

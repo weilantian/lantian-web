@@ -53,6 +53,8 @@ const Home: NextPage<{
         />
       )}
 
+      <DesignWorkList items={designWorks} />
+
       {projects.length > 0 && (
         <ItemList
           items={projects}
@@ -64,8 +66,6 @@ const Home: NextPage<{
           title="Projects"
         />
       )}
-
-      <DesignWorkList items={designWorks} />
 
       {/* <div>
         <div className="flex mt-8 justify-between">
@@ -133,7 +133,7 @@ export const getStaticProps: GetStaticProps = async () => {
   *[ _type == "project"  ] | order(publishedAt desc) {_id, slug , title,publishedAt , description,"category":category->title,"tags":tags[]->title, "coverImage": coverImage.asset->{url,metadata{dimensions}}}`);
 
   const designWorks = await client.fetch(groq`
-  *[ _type == "designWork"   ] | order(publishedAt desc) {_id, slug ,publishedAt , title, description, "image": image.asset->{url,metadata{dimensions}}}
+  *[ _type == "designWork"   ] | order(publishedAt desc) {_id, slug ,publishedAt ,link , title, description, "image": image.asset->{url,metadata{dimensions}}}
   `);
 
   return {

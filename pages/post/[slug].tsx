@@ -11,42 +11,11 @@ import { Post, Slug } from "@/lib/models";
 import { PreviewSuspense } from "next-sanity/preview";
 import Image from "next/image";
 import { formatDate } from "@/lib/utils";
+import { ptComponents } from "@/components/ptComponents";
 
 interface Params extends ParsedUrlQuery {
   slug: string;
 }
-
-const ptComponents = {
-  block: {
-    warning: ({ children }: any) => (
-      <div className="bg-yellow-100 not-prose border-l-4  border-yellow-500 text-yellow-700 p-2">
-        <p className="font-bold ">Warning</p>
-        <p>{children}</p>
-      </div>
-    ),
-  },
-  types: {
-    image: ({ value }: any) => {
-      if (!value?.asset?._ref) {
-        return null;
-      }
-      return (
-        <div className="flex w-full not-prose  bg-gray-50 flex-col rounded-md justify-center">
-          <img
-            className="w-full py-4 h-[200px] object-cover"
-            alt={value.caption || " "}
-            loading="lazy"
-            src={urlFor(value).url()}
-          />
-
-          <span className="text-gray-400 mb-4 mt-1 font-medium text-center text-sm">
-            {value.caption}
-          </span>
-        </div>
-      );
-    },
-  },
-};
 
 const Navbar: FC<{
   category: {
@@ -105,7 +74,7 @@ const BlogContent: FC<{ post: Post }> = ({
             </span>
           ))}
         </div>
-        <article className="mt-8 pt-6 border-gray-200 prose-sm  md:prose  max-w-none   border-t">
+        <article className="mt-8 pt-6 border-gray-200 prose-sm  md:prose md:max-w-none  max-w-none   border-t">
           <PortableText value={body} components={ptComponents} />
         </article>
       </div>
