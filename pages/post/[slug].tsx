@@ -33,7 +33,7 @@ const Navbar: FC<{
       </Link>
       <IoChevronForward className=" text-gray-400" />
       <Link
-        href={`/blog/category/${category.slug.current}`}
+        href={`/catalog/${category.slug.current}`}
         className=" text-gray-500 hover:text-gray-400 cursor-pointer font-medium"
       >
         {category.title}
@@ -47,12 +47,12 @@ const BlogContent: FC<{ post: Post }> = ({
 }) => {
   return (
     <>
-      <div className="w-full  bg-white rounded-xl px-8 py-8">
+      <div className="w-full  bg-white rounded-xl px-8 md:px-14 py-8">
         <Navbar category={category} />
         <div className="mt-4">
           {coverImage ? (
             <Image
-              className="rounded-lg object-cover h-[260px]"
+              className="rounded-lg object-cover h-[220px] md:h-[400px]"
               alt={title + " cover image" || " "}
               height={coverImage.metadata.dimensions.height}
               width={coverImage.metadata.dimensions.width}
