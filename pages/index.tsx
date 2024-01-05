@@ -53,8 +53,6 @@ const Home: NextPage<{
         />
       )}
 
-      <DesignWorkList items={designWorks} />
-
       {projects.length > 0 && (
         <ItemList
           items={projects}
@@ -66,6 +64,8 @@ const Home: NextPage<{
           title="Projects"
         />
       )}
+
+      <DesignWorkList items={designWorks} />
 
       {/* <div>
         <div className="flex mt-8 justify-between">
