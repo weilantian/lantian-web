@@ -40,7 +40,6 @@ const About: NextPage<{
           <BriefTexts content={aboutInfo.about} />
 
           <SkillSet />
-          <Experiences />
 
           <Education />
           <Specializations />
