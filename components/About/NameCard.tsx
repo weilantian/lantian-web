@@ -9,7 +9,7 @@ const NameCard: FC = () => {
       <div className=" bg-white w-full flex justify-center items-center flex-col px-4 pt-4 pb-8 rounded-xl">
         <Image alt="" width={256} height={256} src="/profile.png" />
         <h1 className=" text-2xl font-medium pretty-text">Eric Wei</h1>
-        <h3 className=" text-gray-400 text-md">Melbourne, AU</h3>
+        <h3 className=" text-gray-400 text-md">Sydney, AU</h3>
 
         <span className="  px-4 py-2 flex text-xs lg:text-sm text-gray-400 items-center mt-6 bg-gray-50 font-medium rounded-full">
           UI Engineer / Designer
