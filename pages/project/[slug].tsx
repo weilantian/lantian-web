@@ -93,7 +93,7 @@ const ProjectContent: FC<{ project: Project }> = ({ project }) => {
 
       {project.body && (
         <div className="mt-4 px-4 py-4 rounded-md bg-white">
-          <article className="md:prose prose-sm md:max-w-none max-w-none ">
+          <article className="md:prose prose-sm md:max-w-none max-w-none font-openSans">
             <PortableText value={project.body} components={ptComponents} />
           </article>
         </div>

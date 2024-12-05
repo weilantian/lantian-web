@@ -23,9 +23,11 @@ export const ptComponents = {
             src={urlFor(value).url()}
           />
 
-          <span className="text-gray-400 mb-4 mt-1 font-medium text-center text-sm">
-            {value.caption}
-          </span>
+          {value.caption && (
+            <span className="text-gray-400 mb-4 mt-1 font-medium text-center text-sm">
+              {value.caption}
+            </span>
+          )}
         </div>
       );
     },
